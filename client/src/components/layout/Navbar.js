@@ -28,13 +28,6 @@ class Navbar extends Component {
             onClick={this.onLogoutClick.bind(this)}
             className="nav-link"
           >
-            <img
-              className="rounded-circle"
-              src={user.avatar}
-              alt={user.name}
-              style={{ width: "25px", marginRight: "5px" }}
-              title="You must have a Gravatar connected to your email to display an image"
-            />{" "}
             Logout
           </a>
         </li>
@@ -45,7 +38,7 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/register">
-            Sign Up
+            Create Account
           </Link>
         </li>
         <li className="nav-item">
@@ -57,8 +50,8 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-        <div className="container">
+      <nav className="navbar navbar-dark bg-secondary mb-4">
+        <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Muser
           </Link>

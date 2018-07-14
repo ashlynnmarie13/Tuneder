@@ -10,10 +10,12 @@ img {
   height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
+  align-content: center;
 }
 
 .landing-inner {
   padding-top: 80px;
+  align-content: center;
 }
 
 .dark-overlay {

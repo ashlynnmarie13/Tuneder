@@ -71,15 +71,13 @@ class CreateProfile extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Create Your Profile</h1>
-              <p className="lead text-center">Introduce yourself!</p>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="* Profile Handle"
+                  placeholder="Username - put something catchy!"
                   name="handle"
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}
-                  info="A unique handle for your profile URL. Your full name, company name, nickname"
                 />
                 <TextFieldGroup
                   placeholder="Name"
@@ -87,7 +85,6 @@ class CreateProfile extends Component {
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
-                  info="Name"
                 />
                 <TextFieldGroup
                   placeholder="Age"
@@ -95,7 +92,6 @@ class CreateProfile extends Component {
                   value={this.state.age}
                   onChange={this.onChange}
                   error={errors.age}
-                  info="Age"
                 />
                 <TextFieldGroup
                   placeholder="Location"
@@ -103,38 +99,34 @@ class CreateProfile extends Component {
                   value={this.state.location}
                   onChange={this.onChange}
                   error={errors.location}
-                  info="location"
                 />
                 <SelectListGroup
-                  placeholder="Looking for"
+                  placeholder="Seeking..."
                   name="looking for"
                   value={this.state.lookingFor}
                   onChange={this.onChange}
                   options={options}
                   error={errors.lookingFor}
-                  info="What are you looking for"
                 />
                 <TextAreaFieldGroup
-                  placeholder="Short Bio"
+                  placeholder="Bio"
                   name="bio"
                   value={this.state.bio}
                   onChange={this.onChange}
                   error={errors.bio}
-                  info="Tell us a little about yourself"
                 />
                 <TextFieldGroup
-                  placeholder="Artists"
+                  placeholder="Artists I like...."
                   name="artists"
                   value={this.state.artists}
                   onChange={this.onChange}
                   error={errors.artists}
-                  info="artists"
                 />
 
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-info btn-block mt-4"
+                  className="btn btn-warning btn-lg ml-4 mt-4"
                 />
               </form>
             </div>

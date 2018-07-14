@@ -17,13 +17,19 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Muser</h1>
-                <p className="lead"> Musical Tinder</p>
+                <h1 className="display-3 mt-5 mb-4">Muser</h1>
                 <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
-                  Sign Up
+                <Link
+                  to="/register"
+                  className="btn btn-lg btn-warning btn-group-vertical mr-2"
+                >
+                  Create Account
                 </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
+                <div className="mb-4" />
+                <Link
+                  to="/login"
+                  className="btn btn-lg btn-secondary btn-group-vertical mr-2"
+                >
                   Login
                 </Link>
               </div>
