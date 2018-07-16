@@ -13,6 +13,7 @@ class CreateProfile extends Component {
     this.state = {
       handle: "",
       name: "",
+      avatar: "",
       age: "",
       location: "",
       lookingFor: "",
@@ -37,6 +38,7 @@ class CreateProfile extends Component {
     const profileData = {
       handle: this.state.handle,
       name: this.state.name,
+      avatar: this.state.avatar,
       age: this.state.age,
       location: this.state.location,
       lookingFor: this.state.lookingFor,
@@ -87,6 +89,14 @@ class CreateProfile extends Component {
                   error={errors.name}
                 />
                 <TextFieldGroup
+                  placeholder="Profile Pic URL"
+                  name="avatar"
+                  value={this.state.avatar}
+                  onChange={this.onChange}
+                  error={errors.avatar}
+                  info="Copy and paste an image of yourself here!"
+                />
+                <TextFieldGroup
                   placeholder="Age"
                   name="age"
                   value={this.state.age}
@@ -102,7 +112,7 @@ class CreateProfile extends Component {
                 />
                 <SelectListGroup
                   placeholder="Seeking..."
-                  name="looking for"
+                  name="lookingFor"
                   value={this.state.lookingFor}
                   onChange={this.onChange}
                   options={options}

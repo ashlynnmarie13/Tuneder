@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../common/Spinner";
-import ProfileItem from "./ProfileItem";
+import ProfileItem from "../profiles/ProfileItem";
 import { getMatches } from "../../actions/matchActions";
 
 export default class Matches extends Component {

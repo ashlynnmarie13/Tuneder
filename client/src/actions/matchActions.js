@@ -4,7 +4,11 @@ import { GET_MATCHES } from "./types";
 
 // Get all matches
 export const getMatches = () => dispatch => {
-  dispatch(setProfileLoading());
+  dispatch(
+    {
+      /*setProfileLoading*/
+    }()
+  );
   axios
     .get("/api/matches/all")
     .then(res =>

@@ -11,10 +11,11 @@
     "react-chat-ui": "^0.3.2",
     "react-dom": "^16.3.1",
     "react-moment": "^0.7.0",
-    "react-native-gifted-chat": "^0.4.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-swipe-card": "^0.1.4",
+    "react-web-gifted-chat": "0.0.4",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },

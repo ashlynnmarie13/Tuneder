@@ -14,6 +14,7 @@ class CreateProfile extends Component {
     this.state = {
       handle: "",
       name: "",
+      avatar: "",
       age: "",
       location: "",
       lookingFor: "",
@@ -40,6 +41,7 @@ class CreateProfile extends Component {
 
       // If profile field doesnt exist, make empty string
       profile.name = !isEmpty(profile.name) ? profile.name : "";
+      profile.avatar = !isEmpty(profile.avatar) ? profile.avatar : "";
       profile.age = !isEmpty(profile.age) ? profile.age : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
       profile.lookingFor = !isEmpty(profile.lookingFor)
@@ -52,6 +54,7 @@ class CreateProfile extends Component {
       this.setState({
         handle: profile.handle,
         name: profile.name,
+        avatar: profile.avatar,
         age: profile.age,
         location: profile.location,
         lookingFor: profile.lookingFor,
@@ -67,6 +70,7 @@ class CreateProfile extends Component {
     const profileData = {
       handle: this.state.handle,
       name: this.state.name,
+      avatar: this.state.avatar,
       age: this.state.age,
       location: this.state.location,
       lookingFor: this.state.lookingFor,
@@ -121,6 +125,14 @@ class CreateProfile extends Component {
                   error={errors.name}
                 />
                 <TextFieldGroup
+                  placeholder="Profile Pic URL"
+                  name="avatar"
+                  value={this.state.avatar}
+                  onChange={this.onChange}
+                  error={errors.avatar}
+                  info="Copy and paste an image of yourself here!"
+                />
+                <TextFieldGroup
                   placeholder="Age"
                   name="age"
                   value={this.state.age}
@@ -136,7 +148,7 @@ class CreateProfile extends Component {
                 />
                 <SelectListGroup
                   placeholder="Seeking..."
-                  name="looking for"
+                  name="lookingFor"
                   value={this.state.lookingFor}
                   onChange={this.onChange}
                   options={options}

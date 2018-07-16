@@ -2,23 +2,23 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is-empty";
+import Chat from "../chat/Chat";
 
 class ProfileItem extends Component {
   render() {
     const { profile } = this.props;
 
     return (
-      <div className="card card-body bg-light mb-3">
+      <div className="card card-body bg-secondary mb-3 text-center">
         <div className="row">
-          <div className="col-2">
-            <img src={profile.user.avatar} alt="" className="rounded-circle" />
-          </div>
-          <div className="col-lg-6 col-md-4 col-8">
-            <h3>{profile.user.name}</h3>
+          <img src={profile.avatar} alt="" className="card-img-top" />
+          <h3 className="card-img-overlay">{profile.user.name}</h3>
+          <div className="col-lg-6 col-md-4 col-8 text-light">
             <p>
+              Favorite Artists:
               {profile.status}{" "}
-              {isEmpty(profile.company) ? null : (
-                <span>at {profile.company}</span>
+              {isEmpty(profile.artists) ? null : (
+                <span>at {profile.artists}</span>
               )}
             </p>
             <p>
@@ -26,8 +26,11 @@ class ProfileItem extends Component {
                 <span>{profile.location}</span>
               )}
             </p>
-            <Link to={`/profile/${profile.handle}`} className="btn btn-info">
+            <Link to={`/profile/${profile.handle}`} className="btn btn-warning">
               View Profile
+            </Link>
+            <Link to={`/chat`} className="btn btn-warning">
+              Chat
             </Link>
           </div>
         </div>

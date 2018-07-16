@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Spinner from "../common/Spinner";
 import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profileActions";
+import Cards, { Card } from "react-swipe-card";
 
 class Profiles extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class Profiles extends Component {
             <div className="col-md-12">
               <h1 className="display-4 text-center">Musers</h1>
               <p className="lead text-center">
-                Find and connect with all musers
+                Swipe right to match and left to pass
               </p>
               {profileItems}
             </div>

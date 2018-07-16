@@ -119,6 +119,7 @@ router.post(
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
     if (req.body.name) profileFields.name = req.body.name;
+    if (req.body.avatar) profileFields.avatar = req.body.avatar;
     if (req.body.age) profileFields.age = req.body.age;
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.lookingFor) profileFields.lookingFor = req.body.lookingFor;

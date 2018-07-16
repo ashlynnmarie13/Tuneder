@@ -39,3 +39,24 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.navbar-inverse {
+  min-height: 80px;
+  color: black;
+}
+.container-fluid {
+  padding-top: 15px;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
+
+.card {
+  width: 400px;
+  height: 500px;
+}
+
+.card-img-top {
+  height: 300px;
+}

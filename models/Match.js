@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-const ProfileSchema = new Schema({
-  user: {
+const MatchSchema = new Schema({
+  profile: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "profile"
   },
   handle: {
     type: String,
@@ -13,9 +13,6 @@ const ProfileSchema = new Schema({
     max: 40
   },
   name: {
-    type: String
-  },
-  avatar: {
     type: String
   },
   age: {
@@ -39,4 +36,4 @@ const ProfileSchema = new Schema({
   }
 });
 
-module.exports = Profile = mongoose.model("profile", ProfileSchema);
+module.exports = Match = mongoose.model("match", MatchSchema);
