@@ -7,6 +7,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import isEmpty from "../../validation/is-empty";
+import Spotify from "../spotify/Spotify";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class CreateProfile extends Component {
 
       // If profile field doesnt exist, make empty string
       profile.name = !isEmpty(profile.name) ? profile.name : "";
-      profile.avatar = !isEmpty(profile.avatar) ? profile.avatar : "";
+      profile.avatar = !isEmpty(profile.avatar) ? profile.avatar : {};
       profile.age = !isEmpty(profile.age) ? profile.age : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
       profile.lookingFor = !isEmpty(profile.lookingFor)
@@ -87,7 +88,7 @@ class CreateProfile extends Component {
 
   render() {
     const { errors } = this.state;
-
+    console.log("this is edit profiles state", this.state.artists);
     // Select options for status
     const options = [
       { label: "* Select Option", value: 0 },
@@ -161,20 +162,16 @@ class CreateProfile extends Component {
                   onChange={this.onChange}
                   error={errors.bio}
                 />
-                <TextFieldGroup
-                  placeholder="Artists I like...."
-                  name="artists"
-                  value={this.state.artists}
-                  onChange={this.onChange}
-                  error={errors.artists}
-                />
 
                 <input
                   type="submit"
                   value="Submit"
                   className="btn btn-warning btn-lg mt-4 ml-4"
                 />
+                <div />
               </form>
+              <a href="http://localhost:3002/api/spotify/login">To Spotify</a>
+              <Spotify toState={artists => this.setState({ artists })} />
             </div>
           </div>
         </div>

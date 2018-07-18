@@ -31,7 +31,7 @@ const ProfileSchema = new Schema({
     type: String
   },
   artists: {
-    type: String
+    type: Object
   },
   date: {
     type: Date,

@@ -39,8 +39,4 @@ class ProfileItem extends Component {
   }
 }
 
-ProfileItem.propTypes = {
-  profile: PropTypes.object.isRequired
-};
-
 export default ProfileItem;

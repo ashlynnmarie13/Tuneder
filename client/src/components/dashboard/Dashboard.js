@@ -58,7 +58,6 @@ class Dashboard extends Component {
               <h1 className="display-4">Home</h1>
               {dashboardContent}
             </div>
-            <a href="http://localhost:3002/api/spotify/login">To Spotify</a>
           </div>
         </div>
       </div>

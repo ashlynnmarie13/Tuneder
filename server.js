@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const socket = require("socket.io");
 // const MongoStore = require("connect-mongo")(session);
-// const session = require("express-session");
+const session = require("express-session");
 
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
@@ -60,17 +60,17 @@ mongoose
   .catch(err => console.log(err));
 
 // set up session
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUinitialized: true
-//     // store: new MongoStore({
-//     //   url: process.env.MLAB_URI
-//     //   // 'mongodb://localhost/muser'
-//     // })
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+    // store: new MongoStore({
+    //   url: process.env.MLAB_URI
+    //   // 'mongodb://localhost/muser'
+    // })
+  })
+);
 
 //I HAD TO PUT THIS HERE IDK WHY
 const port = process.env.PORT || 3002;
@@ -94,10 +94,6 @@ app.use(passport.session());
 
 // Passport Config (mongo)
 require("./config/passport")(passport);
-
-app.get("/", (req, res, next) => {
-  res.status(200).send(req.query);
-});
 
 // Use Routes
 app.use("/api/users", users);

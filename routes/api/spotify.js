@@ -32,7 +32,7 @@ router.get("/login", function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = "user-read-private user-read-email";
+  var scope = "user-read-private user-top-read user-read-email";
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
       querystring.stringify({
@@ -52,13 +52,14 @@ router.get("/callback", function(req, res) {
 
   var code = req.query.code || null;
   var state = req.query.state || null;
+  // var scope = req.query.scope || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   console.log({ code, state, storedState });
 
   if (state === null || state !== storedState) {
     res.redirect(
-      "/#" +
+      "http://localhost:3000/edit-profile#" +
         querystring.stringify({
           error: "state_mismatch"
         })
@@ -69,6 +70,7 @@ router.get("/callback", function(req, res) {
       url: "https://accounts.spotify.com/api/token",
       form: {
         code: code,
+        // scope: scope,
         redirect_uri: redirect_uri,
         grant_type: "authorization_code"
       },
@@ -97,16 +99,19 @@ router.get("/callback", function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
+        // req.session.access_token = access_token;
+        // req.session.refresh_token = refresh_token;
         res.redirect(
-          "/?" +
+          "http://localhost:3000/edit-profile#" +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token
             })
         );
+        // res.redirect("http://localhost:3000/edit-profile");
       } else {
         res.redirect(
-          "/?" +
+          "http://localhost:3000/edit-profile#" +
             querystring.stringify({
               error: "invalid_token"
             })
@@ -117,8 +122,10 @@ router.get("/callback", function(req, res) {
 });
 
 router.get("/refresh_token", function(req, res) {
+  console.log("hit");
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
+  console.log(refresh_token);
   var authOptions = {
     url: "https://accounts.spotify.com/api/token",
     headers: {
@@ -141,6 +148,11 @@ router.get("/refresh_token", function(req, res) {
       });
     }
   });
+});
+
+router.get("/tokens", (req, res) => {
+  const { access_token, refresh_token } = req.session;
+  res.status(200).send({ access_token, refresh_token });
 });
 
 module.exports = router;

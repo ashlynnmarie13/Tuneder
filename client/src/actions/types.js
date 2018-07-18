@@ -9,3 +9,5 @@ export const GET_PROFILES = "GET_PROFILES";
 export const GET_MATCHES = "GET_MATCHES";
 export const GET_SPOTIFY = "GET_SPOTIFY";
 export const GET_ARTISTS = "GET_ARTISTS";
+export const SET_USER = "SET_USER";
+export const SET_TOKEN = "SET_TOKEN";
