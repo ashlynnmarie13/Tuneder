@@ -1,11 +1,65 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is-empty";
 import Chat from "../chat/Chat";
+import { createMatch } from "../../actions/matchActions";
 
 class ProfileItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      matches: [],
+      ...this.props.profile
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
+  onMatch = () => {
+    const {
+      matches,
+      handle,
+      name,
+      avatar,
+      age,
+      location,
+      lookingFor,
+      bio,
+      artists
+    } = this.state;
+    this.setState(
+      {
+        matches: [
+          ...this.state.matches,
+          {
+            handle,
+            name,
+            avatar,
+            age,
+            location,
+            lookingFor,
+            bio,
+            artists
+          }
+        ]
+      },
+      () =>
+        this.props.createMatch(
+          { matches: this.state.matches },
+          this.props.history
+        )
+    );
+  };
+
   render() {
+    console.log(this.state);
     const { profile } = this.props;
 
     return (
@@ -32,6 +86,7 @@ class ProfileItem extends Component {
             <Link to={`/chat`} className="btn btn-warning">
               Chat
             </Link>
+            <button onClick={this.onMatch}>Match</button>
           </div>
         </div>
       </div>
@@ -39,4 +94,11 @@ class ProfileItem extends Component {
   }
 }
 
-export default ProfileItem;
+const mapStateToProps = state => ({
+  matches: state.matches
+});
+
+export default connect(
+  mapStateToProps,
+  { createMatch }
+)(withRouter(ProfileItem));

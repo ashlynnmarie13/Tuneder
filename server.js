@@ -16,7 +16,7 @@ const session = require("express-session");
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const spotify = require("./routes/api/spotify");
-/*const matches = require("./routes/api/matches");*/
+const matches = require("./routes/api/matches");
 
 const app = express();
 
@@ -99,7 +99,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/spotify", spotify);
-/*app.use("/api/matches", matches);*/
+app.use("/api/matches", matches);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

@@ -3,37 +3,48 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const MatchSchema = new Schema({
-  profile: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: "profile"
+    ref: "users"
   },
-  handle: {
-    type: String,
-    required: true,
-    max: 40
-  },
-  name: {
-    type: String
-  },
-  age: {
-    type: String
-  },
-  location: {
-    type: String
-  },
-  lookingFor: {
-    type: String
-  },
-  bio: {
-    type: String
-  },
-  artists: {
-    type: String
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  matches: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+      },
+      handle: {
+        type: String,
+        required: true,
+        max: 40
+      },
+      name: {
+        type: String
+      },
+      avatar: {
+        type: String
+      },
+      age: {
+        type: String
+      },
+      location: {
+        type: String
+      },
+      lookingFor: {
+        type: String
+      },
+      bio: {
+        type: String
+      },
+      artists: {
+        type: Object
+      },
+      date: {
+        type: Date,
+        default: Date.now
+      }
+    }
+  ]
 });
 
 module.exports = Match = mongoose.model("match", MatchSchema);

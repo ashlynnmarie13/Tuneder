@@ -13,6 +13,12 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
+        <video id="background-video" loop autoPlay>
+          <source
+            src="https://staging.coverr.co/s3/mp4/Date.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
             <div className="row">
