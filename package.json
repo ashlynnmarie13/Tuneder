@@ -1,5 +1,5 @@
 {
-  "name": "devconnector",
+  "name": "TUNEder",
   "version": "1.0.0",
   "description": "Social network for developers",
   "main": "server.js",
@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "author": "Brad Traversy",
+  "author": "Ashlynn Rodriguez",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",

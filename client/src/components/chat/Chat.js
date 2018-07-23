@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import io from "socket.io-client";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileActions";
+import { Link } from "react-router-dom";
 
 class Chat extends React.Component {
   constructor(props) {
@@ -44,45 +45,47 @@ class Chat extends React.Component {
     console.log(this.props.profile.profile && this.props.profile.profile.name);
 
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-4">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">Send your message</div>
-                <hr />
-                <div className="messages" />
-                {this.state.messages.map(message => {
-                  return (
-                    <div>
-                      {name}: {message.message}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="card-footer">
-                <h3>{name}</h3>
+      <div className="register-background">
+        <div className="chat">
+          <Link to="/profiles" className="btn btn-light mb-3">
+            Back To Profiles
+          </Link>
+          <div className="card">
+            <div className="card-body">
+              <div className="card-title">Send your message</div>
+              <hr />
+              <div className="messages" />
+              {this.state.messages.map(message => {
+                return (
+                  <div>
+                    {name}: {message.message}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="card-footer">
+              <h3>{name}</h3>
 
-                <br />
-                <input
-                  type="text"
-                  placeholder="Message"
-                  className="form-control"
-                  value={this.state.message}
-                  onChange={ev => this.setState({ message: ev.target.value })}
-                />
-                <br />
-                <br />
-                <button
-                  onClick={this.sendMessage}
-                  className="btn btn-primary form-control"
-                >
-                  Send
-                </button>
-              </div>
+              <br />
+              <input
+                type="text"
+                placeholder="Message"
+                className="form-control"
+                value={this.state.message}
+                onChange={ev => this.setState({ message: ev.target.value })}
+              />
+              <br />
+              <br />
+              <button
+                onClick={this.sendMessage}
+                className="btn btn-primary form-control"
+              >
+                Send
+              </button>
             </div>
           </div>
         </div>
+        <div className="dark-overlay" />
       </div>
     );
   }

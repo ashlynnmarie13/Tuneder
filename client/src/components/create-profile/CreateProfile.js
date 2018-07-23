@@ -19,6 +19,7 @@ class CreateProfile extends Component {
       lookingFor: "",
       bio: "",
       artists: "",
+      art: "",
       errors: {}
     };
 
@@ -43,7 +44,8 @@ class CreateProfile extends Component {
       location: this.state.location,
       lookingFor: this.state.lookingFor,
       bio: this.state.bio,
-      artists: this.state.artists
+      artists: this.state.artists,
+      art: this.state.art
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -68,79 +70,84 @@ class CreateProfile extends Component {
     ];
 
     return (
-      <div className="create-profile">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create Your Profile</h1>
-              <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Username - put something catchy!"
-                  name="handle"
-                  value={this.state.handle}
-                  onChange={this.onChange}
-                  error={errors.handle}
-                />
-                <TextFieldGroup
-                  placeholder="Name"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  error={errors.name}
-                />
-                <TextFieldGroup
-                  placeholder="Profile Pic URL"
-                  name="avatar"
-                  value={this.state.avatar}
-                  onChange={this.onChange}
-                  error={errors.avatar}
-                  info="Copy and paste an image of yourself here!"
-                />
-                <TextFieldGroup
-                  placeholder="Age"
-                  name="age"
-                  value={this.state.age}
-                  onChange={this.onChange}
-                  error={errors.age}
-                />
-                <TextFieldGroup
-                  placeholder="Location"
-                  name="location"
-                  value={this.state.location}
-                  onChange={this.onChange}
-                  error={errors.location}
-                />
-                <SelectListGroup
-                  placeholder="Seeking..."
-                  name="lookingFor"
-                  value={this.state.lookingFor}
-                  onChange={this.onChange}
-                  options={options}
-                  error={errors.lookingFor}
-                />
-                <TextAreaFieldGroup
-                  placeholder="Bio"
-                  name="bio"
-                  value={this.state.bio}
-                  onChange={this.onChange}
-                  error={errors.bio}
-                />
-                <TextFieldGroup
-                  placeholder="Artists I like...."
-                  name="artists"
-                  value={this.state.artists}
-                  onChange={this.onChange}
-                  error={errors.artists}
-                />
+      <div className="register-background">
+        <div className="create-profile">
+          <div className="container-create">
+            <div className="row">
+              <div className="col-md-8 m-auto">
+                <h1 className="red-text display-4 text-center">
+                  Create Your Profile
+                </h1>
+                <form onSubmit={this.onSubmit}>
+                  <TextFieldGroup
+                    placeholder="Username - put something catchy!"
+                    name="handle"
+                    value={this.state.handle}
+                    onChange={this.onChange}
+                    error={errors.handle}
+                  />
+                  <TextFieldGroup
+                    placeholder="Name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    error={errors.name}
+                  />
+                  <TextFieldGroup
+                    placeholder="Profile Pic URL"
+                    name="avatar"
+                    value={this.state.avatar}
+                    onChange={this.onChange}
+                    error={errors.avatar}
+                    info="Copy and paste an image of yourself here!"
+                  />
+                  <TextFieldGroup
+                    placeholder="Age"
+                    name="age"
+                    value={this.state.age}
+                    onChange={this.onChange}
+                    error={errors.age}
+                  />
+                  <TextFieldGroup
+                    placeholder="Location"
+                    name="location"
+                    value={this.state.location}
+                    onChange={this.onChange}
+                    error={errors.location}
+                  />
+                  <SelectListGroup
+                    placeholder="Seeking..."
+                    name="lookingFor"
+                    value={this.state.lookingFor}
+                    onChange={this.onChange}
+                    options={options}
+                    error={errors.lookingFor}
+                  />
+                  <TextAreaFieldGroup
+                    placeholder="Bio"
+                    name="bio"
+                    value={this.state.bio}
+                    onChange={this.onChange}
+                    error={errors.bio}
+                  />
+                  <TextFieldGroup
+                    placeholder="Artists I like...."
+                    name="artists"
+                    value={this.state.artists}
+                    onChange={this.onChange}
+                    error={errors.artists}
+                  />
 
-                <input
-                  type="submit"
-                  value="Submit"
-                  className="btn btn-warning btn-lg ml-4 mt-4"
-                />
-              </form>
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="btn btn-lg ml-4 mt-4"
+                  />
+                </form>
+              </div>
             </div>
           </div>
+          <div className="dark-overlay" />
         </div>
       </div>
     );

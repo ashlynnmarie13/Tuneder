@@ -20,7 +20,7 @@ export const getMatches = () => dispatch => {
     .catch(err =>
       dispatch({
         type: GET_MATCHES,
-        payload: null
+        payload: {}
       })
     );
 };

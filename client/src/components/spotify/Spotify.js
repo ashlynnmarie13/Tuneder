@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import queryString from "query-string";
 import axios from "axios";
+import Carousel from "./Carousel.js";
 
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
@@ -15,10 +16,13 @@ class Spotify extends Component {
     }
     this.state = {
       artists: [],
+      art: [],
       loggedIn: token ? true : false,
       nowPlaying: { name: "Not Checked", albumArt: "" },
       refreshToken: params.refresh_token
     };
+    this.getTopArtists = this.getTopArtists.bind(this);
+    this.getAlbumArt = this.getAlbumArt.bind(this);
   }
   //   componentDidMount() {
   //     let parsed = queryString.parse(window.location.search);
@@ -95,16 +99,30 @@ class Spotify extends Component {
   getTopArtists() {
     spotifyApi.getMyTopArtists().then(response => {
       var array = response.items;
+      console.log(response.items);
       var result = array.map(function(obj) {
         return obj.name;
       });
-      console.log(result);
-      var resultAsString = result.join(", ");
+      // console.log(result);
+      // var resultAsString = result.join(", ");
 
-      this.setState(
-        { artists: resultAsString },
-        this.props.toState(resultAsString)
-      );
+      this.setState({ artists: result }, this.props.toState(result));
+    });
+  }
+
+  getAlbumArt() {
+    spotifyApi.getMyTopArtists().then(response => {
+      var array = response.items;
+      console.log(response.items);
+      var result = array.map(function(obj) {
+        return obj.images;
+      });
+      console.log(result);
+      var pictures = result.map(function(obj) {
+        return obj[0].url;
+      });
+      console.log(pictures);
+      this.setState({ art: pictures }, this.props.toArtState(pictures));
     });
   }
 
@@ -120,17 +138,289 @@ class Spotify extends Component {
   }
 
   render() {
-    const { artists } = this.props;
+    const { artists, art } = this.props;
     return (
       <div className="App">
-        My top Artists:
-        <div>{this.state.artists}</div>
-        <button onClick={() => this.refreshRefreshToken()}>
-          Get new RefreshToken or something
-        </button>
+        <p className="white-text"> My top Artists: </p>
+        <div className="carousel-spotify">
+          <div>
+            <Carousel autoPlayInterval={2000} indicator={true} switcher={true}>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[0]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[0]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[1]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[1]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[4]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[4]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[5]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[5]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[8]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[8]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[9]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[9]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[12]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[12]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[13]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[13]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[16]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[16]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[17]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[17]}
+                    alt=""
+                  />
+                </div>
+              </div>
+            </Carousel>
+          </div>
+          <div>
+            <Carousel autoPlayInterval={2000} indicator={true} switcher={true}>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[2]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[2]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[3]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[3]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[6]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[6]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[7]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[7]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[10]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[10]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[11]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[11]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[14]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[14]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[15]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[15]}
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div
+                className="spotify-box"
+                style={{
+                  height: "200px",
+                  textAlign: "center",
+                  backgroundColor: "#1a1a1d",
+                  color: "white"
+                }}
+              >
+                <div className="spotify-item">
+                  {this.state.artists[18]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[19]}
+                    alt=""
+                  />
+                </div>
+                <div className="spotify-item">
+                  {this.state.artists[19]}
+                  <img
+                    className="spotify-image"
+                    src={this.state.art[19]}
+                    alt=""
+                  />
+                </div>
+              </div>
+            </Carousel>
+          </div>
+        </div>
         {this.state.loggedIn && (
-          <button onClick={() => this.getTopArtists()}>
-            Check my Top Artists WOOO
+          <button
+            className="btn btn-edit"
+            onClick={() => {
+              this.getTopArtists();
+              this.getAlbumArt();
+            }}
+          >
+            Check my Top Artists
           </button>
         )}
       </div>

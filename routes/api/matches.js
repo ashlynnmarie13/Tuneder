@@ -26,9 +26,9 @@ router.get(
           return res.status(404).json(errors);
         }
 
-        res.json(profiles);
+        res.json(matches);
       })
-      .catch(err => res.status(404).json({ profile: "There are no matches" }));
+      .catch(err => res.status(404).json({ matches: "There are no matches" }));
   }
 );
 

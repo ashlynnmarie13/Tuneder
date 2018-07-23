@@ -39,6 +39,9 @@ const MatchSchema = new Schema({
       artists: {
         type: Object
       },
+      art: {
+        type: Object
+      },
       date: {
         type: Date,
         default: Date.now

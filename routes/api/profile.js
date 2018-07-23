@@ -125,6 +125,7 @@ router.post(
     if (req.body.lookingFor) profileFields.lookingFor = req.body.lookingFor;
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.artists) profileFields.artists = req.body.artists;
+    if (req.body.art) profileFields.art = req.body.art;
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {

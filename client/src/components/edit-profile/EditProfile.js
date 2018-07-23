@@ -21,6 +21,7 @@ class CreateProfile extends Component {
       lookingFor: "",
       bio: "",
       artists: "",
+      art: "",
       errors: {}
     };
 
@@ -50,6 +51,7 @@ class CreateProfile extends Component {
         : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.artists = !isEmpty(profile.artists) ? profile.artists : "";
+      profile.art = !isEmpty(profile.art) ? profile.art : "";
 
       // Set component fields state
       this.setState({
@@ -60,7 +62,8 @@ class CreateProfile extends Component {
         location: profile.location,
         lookingFor: profile.lookingFor,
         bio: profile.bio,
-        artists: profile.artists
+        artists: profile.artists,
+        art: profile.art
       });
     }
   }
@@ -76,7 +79,8 @@ class CreateProfile extends Component {
       location: this.state.location,
       lookingFor: this.state.lookingFor,
       bio: this.state.bio,
-      artists: this.state.artists
+      artists: this.state.artists,
+      art: this.state.art
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -88,7 +92,8 @@ class CreateProfile extends Component {
 
   render() {
     const { errors } = this.state;
-    console.log("this is edit profiles state", this.state.artists);
+    console.log("this is edit profiles state for artists", this.state.artists);
+    console.log("this is edit profiles state for art", this.state.art);
     // Select options for status
     const options = [
       { label: "* Select Option", value: 0 },
@@ -101,80 +106,98 @@ class CreateProfile extends Component {
     ];
 
     return (
-      <div className="create-profile">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-light">
-                Go Back
-              </Link>
-              <h1 className="display-4 text-center">Edit Profile</h1>
-              <small className="d-block pb-3">* = required fields</small>
+      <div className="register-background">
+        <div className="edit-profile">
+          <div className="container-edit">
+            <div className="edit-form">
+              <div className="box-1">
+                <Link to="/dashboard" className="btn btn-light">
+                  Go Back
+                </Link>
+                <h1 className="text-center">Edit Profile</h1>
+                <small className="d-block pb-3">* = required fields</small>
+                <form onSubmit={this.onSubmit}>
+                  <TextFieldGroup
+                    placeholder="Username"
+                    name="handle"
+                    value={this.state.handle}
+                    onChange={this.onChange}
+                    error={errors.handle}
+                  />
+                  <TextFieldGroup
+                    placeholder="Name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    error={errors.name}
+                  />
+                  <TextFieldGroup
+                    placeholder="Profile Pic URL"
+                    name="avatar"
+                    value={this.state.avatar}
+                    onChange={this.onChange}
+                    error={errors.avatar}
+                    info="Copy and paste an image of yourself here!"
+                  />
+                </form>
+              </div>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Username"
-                  name="handle"
-                  value={this.state.handle}
-                  onChange={this.onChange}
-                  error={errors.handle}
-                />
-                <TextFieldGroup
-                  placeholder="Name"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  error={errors.name}
-                />
-                <TextFieldGroup
-                  placeholder="Profile Pic URL"
-                  name="avatar"
-                  value={this.state.avatar}
-                  onChange={this.onChange}
-                  error={errors.avatar}
-                  info="Copy and paste an image of yourself here!"
-                />
-                <TextFieldGroup
-                  placeholder="Age"
-                  name="age"
-                  value={this.state.age}
-                  onChange={this.onChange}
-                  error={errors.age}
-                />
-                <TextFieldGroup
-                  placeholder="Location"
-                  name="location"
-                  value={this.state.location}
-                  onChange={this.onChange}
-                  error={errors.location}
-                />
-                <SelectListGroup
-                  placeholder="Seeking..."
-                  name="lookingFor"
-                  value={this.state.lookingFor}
-                  onChange={this.onChange}
-                  options={options}
-                  error={errors.lookingFor}
-                />
-                <TextAreaFieldGroup
-                  placeholder="Bio"
-                  name="bio"
-                  value={this.state.bio}
-                  onChange={this.onChange}
-                  error={errors.bio}
-                />
+                <div className="box-2">
+                  <TextFieldGroup
+                    placeholder="Age"
+                    name="age"
+                    value={this.state.age}
+                    onChange={this.onChange}
+                    error={errors.age}
+                  />
+                  <TextFieldGroup
+                    placeholder="Location"
+                    name="location"
+                    value={this.state.location}
+                    onChange={this.onChange}
+                    error={errors.location}
+                  />
+                  <SelectListGroup
+                    placeholder="Seeking..."
+                    name="lookingFor"
+                    value={this.state.lookingFor}
+                    onChange={this.onChange}
+                    options={options}
+                    error={errors.lookingFor}
+                  />
 
-                <input
-                  type="submit"
-                  value="Submit"
-                  className="btn btn-warning btn-lg mt-4 ml-4"
-                />
+                  <TextAreaFieldGroup
+                    placeholder="Bio"
+                    name="bio"
+                    value={this.state.bio}
+                    onChange={this.onChange}
+                    error={errors.bio}
+                  />
+
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="btn btn-lg mt-4 ml-4"
+                  />
+                </div>
                 <div />
               </form>
-              <a href="http://localhost:3002/api/spotify/login">To Spotify</a>
-              <Spotify toState={artists => this.setState({ artists })} />
+              <div className="box-3">
+                <a
+                  className="btn btn-1 btn-lg btn-spotify btn-secondary"
+                  href="http://localhost:3002/api/spotify/login"
+                >
+                  To Spotify
+                </a>
+                <Spotify
+                  toState={artists => this.setState({ artists })}
+                  toArtState={art => this.setState({ art })}
+                />
+              </div>
             </div>
           </div>
         </div>
+        <div className="dark-overlay" />
       </div>
     );
   }

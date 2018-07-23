@@ -24,21 +24,26 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <p className="lead text-muted">
-              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
-            </p>
-            <ProfileActions />
-            <div style={{ marginBottom: "60px" }} />
+            <div className="scoot-right">
+              <p className="lead home-info">
+                Welcome{" "}
+                <Link to={`/profile/${profile.handle}`} className="link">
+                  {user.name}
+                </Link>
+              </p>
+              <ProfileActions />
+              <div style={{ marginBottom: "60px" }} />
+            </div>
           </div>
         );
       } else {
         // User is logged in but has no profile
         dashboardContent = (
           <div>
-            <p>
+            <p className="scoot-right">
               Set up a profile to let other users know what you're looking for!
             </p>
-            <Link to="/create-profile" className="btn btn-lg btn-warning">
+            <Link to="/create-profile" className="scoot-right btn btn-lg">
               Create Profile
             </Link>
           </div>
@@ -47,15 +52,24 @@ class Dashboard extends Component {
     }
 
     return (
-      <div className="dashboard">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4">Home</h1>
-              {dashboardContent}
+      <div className="register-background">
+        <div className="register">
+          <div className="container-pic">
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="red-text scoot-right scoot-down display-4">
+                  Home
+                </h1>
+                {dashboardContent}
+              </div>
             </div>
+            <img
+              className="good-image"
+              src="https://media.gettyimages.com/photos/young-couple-is-listening-music-on-their-mobile-picture-id539206195?b=1&k=6&m=539206195&s=612x612&w=0&h=FqY3-_JdkuD-8rmU2JO6_wSaVYJGMc7LKCeA16tMuow="
+            />
           </div>
         </div>
+        <div className="dark-overlay" />
       </div>
     );
   }

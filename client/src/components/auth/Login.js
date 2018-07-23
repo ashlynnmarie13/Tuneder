@@ -52,37 +52,39 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center mb-3 mt-4">Log In</h1>
-              <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  error={errors.email}
-                />
+      <div className="register-background">
+        <div className="register">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 m-auto">
+                <h1 className="red-text display-4 text-center mb-3 mt-4">
+                  Log In
+                </h1>
+                <form onSubmit={this.onSubmit}>
+                  <TextFieldGroup
+                    placeholder="Email Address"
+                    name="email"
+                    type="email"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                    error={errors.email}
+                  />
 
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  error={errors.password}
-                />
-                <input
-                  type="submit"
-                  className="btn btn-warning btn-lg ml-4 mt-1"
-                />
-              </form>
+                  <TextFieldGroup
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                    error={errors.password}
+                  />
+                  <input type="submit" className="btn btn-lg ml-4 mt-1" />
+                </form>
+              </div>
             </div>
           </div>
         </div>
+        <div className="dark-overlay" />
       </div>
     );
   }

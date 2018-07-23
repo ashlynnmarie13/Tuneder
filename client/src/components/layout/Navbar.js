@@ -17,13 +17,13 @@ class Navbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
+      <ul className="navbar-nav ml-auto navwhole">
+        <li className="nav-item nav3">
           <Link className="nav-link" to="/dashboard">
             Home
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item nav4">
           <a
             href=""
             onClick={this.onLogoutClick.bind(this)}
@@ -51,10 +51,10 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar-inverse navbar-dark bg-secondary mb-4">
+      <nav className="nav navbar-inverse navbar-dark navbar-fixed-top mb-4">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            Muser
+          <Link className="navbar-brand font2" to="/">
+            TUNE&#119082;der
           </Link>
           <button
             className="navbar-toggler"
@@ -66,23 +66,28 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                  {" "}
-                  Musers
-                </Link>
-              </li>
-            </ul>
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/matches">
-                  {" "}
-                  Matches
-                </Link>
-              </li>
-            </ul>
-            {isAuthenticated ? authLinks : guestLinks}
+            <div
+              className="navbar-nav flex-row ml-md-auto d-md-flex"
+              id="mobile-nav"
+            >
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link className="nav-link nav1" to="/profiles">
+                    {" "}
+                    TUNEder
+                  </Link>
+                </li>
+              </ul>
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link className="nav-link nav2" to="/matches">
+                    {" "}
+                    Matches
+                  </Link>
+                </li>
+              </ul>
+              {isAuthenticated ? authLinks : guestLinks}
+            </div>
           </div>
         </div>
       </nav>

@@ -5,13 +5,54 @@ import Spinner from "../common/Spinner";
 // import MatchItem from "../profiles/MatchItem";
 import { getMatches } from "../../actions/matchActions";
 
+// import Carousel from "./Carousel.js";
+
 export default class Matches extends Component {
   render() {
-    return <div>Matches</div>;
+    return (
+      <div>Matches</div>
+      // <Carousel autoPlayInterval={2000} indicator={true} switcher={true}>
+      //   <div
+      //     style={{
+      //       height: "300px",
+      //       textAlign: "center",
+      //       backgroundColor: "#1a1a1d"
+      //     }}
+      //   >
+      //     1
+      //   </div>
+      //   <div
+      //     style={{
+      //       height: "300px",
+      //       textAlign: "center",
+      //       backgroundColor: "#1a1a1d"
+      //     }}
+      //   >
+      //     2
+      //   </div>
+      //   <div
+      //     style={{
+      //       height: "300px",
+      //       textAlign: "center",
+      //       backgroundColor: "#1a1a1d"
+      //     }}
+      //   >
+      //     3
+      //   </div>
+      //   <div
+      //     style={{
+      //       height: "300px",
+      //       textAlign: "center",
+      //       backgroundColor: "#1a1a1d"
+      //     }}
+      //   >
+      //     4
+      //   </div>
+      // </Carousel>
+    );
   }
 }
 
-// class Profiles extends Component {
 //   componentDidMount() {
 //     this.props.getMatches();
 //   }
@@ -63,4 +104,3 @@ export default class Matches extends Component {
 // export default connect(
 //   mapStateToProps,
 //   { getProfiles }
-// )(Profiles);

@@ -18,6 +18,7 @@
     "react-web-gifted-chat": "0.0.4",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "slider": "^1.0.4",
     "spotify-web-api-js": "^0.24.0"
   },
   "scripts": {
@@ -26,5 +27,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3002"
+  "proxy": "http://localhost:3002",
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.1.2"
+  }
 }

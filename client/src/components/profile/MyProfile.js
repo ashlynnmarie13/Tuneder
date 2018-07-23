@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import isEmpty from "../../validation/is-empty";
+import Carousel from "../spotify/Carousel.js";
+import { Link } from "react-router-dom";
 
 class MyProfile extends Component {
   render() {
@@ -7,132 +9,323 @@ class MyProfile extends Component {
 
     const firstName = profile.user.name.trim().split(" ")[0];
     return (
-      //       <div classNameName="row">
-      //         <div classNameName="col-md-12">
-      //           <div classNameName="card card-body bg-info text-white mb-3">
-      //             <div classNameName="row">
-      //               <div classNameName="col-4 col-md-3 m-auto">
-      //                 <img classNameName="rounded-circle" src={profile.avatar} alt="" />
-      //               </div>
-      //             </div>
-      //             <div classNameName="text-center">
-      //               <h1 classNameName="display-4 text-center">{profile.user.name}</h1>
-      //               <h3 classNameName="text-center text-info">{firstName}'s Bio</h3>
-      //               <p classNameName="lead">
-      //                 {isEmpty(profile.bio) ? (
-      //                   <span>{firstName} does not have a bio</span>
-      //                 ) : (
-      //                   <span>{profile.bio}</span>
-      //                 )}
-      //               </p>
-      //             </div>
-      //           </div>
-      //         </div>
-      //       </div>
-      //     );
-      //   }
-      // }
-      <div className="container container-profile">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div className="row">
-                  <div className="col-xs-12 col-sm-8">
-                    <h2>{profile.user.name}</h2>
-                    <p>
-                      <strong>Age: </strong> {profile.age}{" "}
-                    </p>
-                    <p>
-                      <strong>Location: </strong> {profile.location}{" "}
-                    </p>
-                    <p>
-                      <strong>Looking For: </strong> {profile.lookingFor}{" "}
-                    </p>
-                    <p>
-                      <strong>Bio: </strong> {profile.bio}{" "}
-                    </p>
-                    <p>
-                      <strong>Favorite Genres: </strong>
-                      <span className="label label-info tags">html5</span>
-                      <span className="label label-info tags">css3</span>
-                      <span className="label label-info tags">jquery</span>
-                      <span className="label label-info tags">bootstrap3</span>
-                    </p>
-                  </div>
-                  <div className="col-xs-12 col-sm-4 text-center">
-                    <img
-                      src="http://api.randomuser.me/portraits/men/49.jpg"
-                      alt=""
-                      className="center-block img-circle img-responsive"
-                    />
-                    <ul
-                      className="list-inline ratings text-center"
-                      title="Ratings"
-                    >
-                      <li>
-                        <a href="#">
-                          <span className="fa fa-star fa-lg" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="fa fa-star fa-lg" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="fa fa-star fa-lg" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="fa fa-star fa-lg" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span className="fa fa-star fa-lg" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+      <div className="container-myprofile">
+        <div className="profile-box-1">
+          <img src={profile.avatar} alt="" className="profile-pic" />
+          <h3>{profile.user.name}</h3>
+          <div>
+            <p>
+              Age:
+              {profile.status}{" "}
+              {isEmpty(profile.age) ? null : <span> {profile.age}</span>}
+            </p>
+            <p>
+              Location:
+              {isEmpty(profile.location) ? null : (
+                <span> {profile.location}</span>
+              )}
+            </p>
+            <p>
+              {isEmpty(profile.lookingFor) ? null : (
+                <span> {profile.lookingFor}</span>
+              )}
+            </p>
+            <p>Click "View Profile" to view {profile.user.name}'s full bio!</p>
+            <Link to={`/chat`} className="btn btn-1">
+              Chat
+            </Link>
+          </div>
+        </div>
+        <div className="profile-box-3">
+          <Link to="/profiles" className="btn btn-light mb-3 scoot-over">
+            Back To Profiles
+          </Link>
+          <p>
+            <h3 className="profile-name">{profile.user.name}'s Profile</h3>
+            <h3> Bio:</h3>
+            {profile.status}{" "}
+            {isEmpty(profile.bio) ? null : <span> {profile.bio}</span>}
+          </p>
+        </div>
 
-                  <div className="col-xs-12 col-sm-4">
-                    <h2>
-                      <strong> 20,7K </strong>
-                    </h2>
-                    <p>
-                      <small>Followers</small>
-                    </p>
-                    <button className="btn btn-success btn-block">
-                      <span className="fa fa-plus-circle" /> Follow{" "}
-                    </button>
+        <div className="profile-box-2">
+          <p className="white-text-2"> My top Artists: </p>
+          <div className="carousel-spotify-profileitem">
+            <div>
+              <Carousel
+                autoPlayInterval={2000}
+                indicator={true}
+                switcher={true}
+              >
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[0]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[0]}
+                      alt=""
+                    />
                   </div>
-                  <div className="col-xs-12 col-sm-4">
-                    <h2>
-                      <strong>245</strong>
-                    </h2>
-                    <p>
-                      <small>Following</small>
-                    </p>
-                    <button className="btn btn-info btn-block">
-                      <span className="fa fa-user" /> View Profile{" "}
-                    </button>
-                  </div>
-                  <div className="col-xs-12 col-sm-4">
-                    <h2>
-                      <strong>43</strong>
-                    </h2>
-                    <p>
-                      <small>Snippets</small>
-                    </p>
-                    <button type="button" className="btn btn-primary btn-block">
-                      <span className="fa fa-gear" /> Options{" "}
-                    </button>
+                  <div className="spotify-item">
+                    {profile.artists[1]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[1]}
+                      alt=""
+                    />
                   </div>
                 </div>
-              </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[4]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[4]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[5]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[5]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[8]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[8]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[9]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[9]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[12]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[12]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[13]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[13]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[16]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[16]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[17]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[17]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </Carousel>
+            </div>
+            <div>
+              <Carousel
+                autoPlayInterval={2000}
+                indicator={true}
+                switcher={true}
+              >
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[2]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[2]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[3]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[3]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[6]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[6]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[7]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[7]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[10]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[10]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[11]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[11]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[14]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[14]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[15]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[15]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {profile.artists[18]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[19]}
+                      alt=""
+                    />
+                  </div>
+                  <div className="spotify-item">
+                    {profile.artists[19]}
+                    <img
+                      className="spotify-image"
+                      src={profile.art[19]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </Carousel>
             </div>
           </div>
         </div>

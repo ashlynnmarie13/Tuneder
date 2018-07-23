@@ -27,19 +27,17 @@ class Profiles extends Component {
     }
 
     return (
-      <div className="profiles">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Musers</h1>
-              <p className="lead text-center">
-                Swipe right to match and left to pass
-              </p>
-              {/* <div style={Object.assign({}, styles.slide, styles.slide1)}> */}
-              {profileItems}
-            </div>
+      <div>
+        <div className="profiles-new">
+          <div className="tuneders-box">
+            <h1 className="text-center">TUNEder Profiles</h1>
+            <p className="text-center">Swipe right to match and left to pass</p>
           </div>
+          {/* <div style={Object.assign({}, styles.slide, styles.slide1)}> */}
+          {profileItems}
         </div>
+        <div className="register-background" />
+        <div className="dark-overlay" />
       </div>
     );
   }

@@ -11,16 +11,16 @@ img {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  width: 100%;
-  height: 100%;
-  z-index: -100;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  margin: 0 auto;
 }
 
 .landing {
   position: relative;
   background-size: cover;
   background-position: center;
-  height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
   align-content: center;
@@ -32,12 +32,19 @@ img {
 }
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  margin: 0 auto;
+  z-index: -100;
+  background-color: #1a1a1d;
+  opacity: 0.8;
+  z-index: -90;
 }
 
 .card-form {
@@ -54,11 +61,16 @@ img {
 }
 
 .navbar-inverse {
-  min-height: 80px;
-  color: black;
+  min-height: 100px;
+  background-color: transparent;
+  opacity: 0.7;
 }
 .container-fluid {
   padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .navbar-brand {
@@ -141,5 +153,511 @@ span.tags {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 2500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+}
+
+.container-create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  height: 800px;
+  margin-top: 100px;
+  margin-left: 30%;
+  background-color: white;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+}
+
+.container-edit {
+  margin-top: 10%;
+  width: 70%;
+  height: 600px;
+  margin-left: 25%;
+  background-color: white;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+}
+
+.landing-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container-landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 50%;
+  height: 500px;
+}
+
+.font1 {
+  color: white;
+  font-size: 13vh;
+  opacity: none;
+  font-family: "Knewave";
+  text-shadow: 5px 5px 2px #6f2232;
+}
+.font2 {
+  color: white;
+  font-size: 8vh;
+  opacity: none;
+  font-family: "Knewave";
+  text-shadow: 5px 5px 2px #6f2232;
+}
+
+.btn {
+  background-color: #c3073f;
+  color: white;
+}
+
+.btn:hover {
+  color: #1a1a1d;
+  /*  Making button bigger on hover  */
+  transform: scale(1.5) perspective(1px);
+}
+
+.btn-1 {
+  background-color: black;
+}
+
+.register-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  margin: 0 auto;
+  z-index: -100;
+  background-image: url(https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+  height: 500px;
+}
+
+.red-text {
+  color: #6f2232;
+}
+
+.container-pic {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  height: 500px;
+  margin-left: 20%;
+  background-color: white;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+}
+
+.good-image {
+  width: 65%;
+  height: 100%;
+  border-radius: 0px 70px 30px 0px;
+}
+
+.scoot-right {
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.scoot-down {
+  margin-top: 20%;
+}
+
+.home-info {
+  height: 10%;
+  width: 400px;
+}
+
+.edit-form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 30px 70px;
+}
+
+.box-1 {
+  margin-top: 50px;
+  height: 80%;
+  width: 30%;
+  margin-left: 10px;
+}
+.box-2 {
+  width: 90%;
+  margin-right: 250px;
+  margin-top: 180px;
+}
+.box-3 {
+  width: 30%;
+  background-color: #6f2232;
+  border-radius: 30px 70px;
+}
+
+#content {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+#content figure {
+  margin: 0;
+}
+.react-3d-carousel {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.react-3d-carousel .carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.react-3d-carousel .carousel figure {
+  display: block;
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  left: 10px;
+  top: 10px;
+  border: 2px solid black;
+  line-height: 116px;
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.react-3d-carousel .carousel figure {
+  background: hsla(160, 100%, 50%, 0.8);
+}
+
+#content table {
+  position: absolute;
+  top: 400px;
+  width: 400px;
+}
+
+.slider ul li > img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.slider ol {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  bottom: 0.5em;
+  text-align: center;
+  width: 100%;
+}
+
+.slider ol li {
+  display: inline-block;
+  min-width: 10px;
+  min-height: 10px;
+  width: 0.6em;
+  height: 0.6em;
+  background-color: #bec0bc;
+  margin: 0 0.5em;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  text-indent: 100%;
+}
+
+.slider ol [aria-current="true"] {
+  pointer-events: none;
+  cursor: auto;
+  background-color: black;
+}
+
+.slider ul ~ div {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -1em;
+  padding: 0;
+}
+
+.slider ul ~ div button {
+  position: absolute;
+  font-size: inherit;
+  background-color: black;
+  height: 2em;
+  width: 2em;
+  opacity: 0.5;
+  padding: 0;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider .prev {
+  left: 0;
+}
+
+.slider .next {
+  right: 0;
+}
+
+.spotify-image {
+  height: 110px;
+  width: 110px;
+  margin-left: 25%;
+}
+.spotify-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.spotify-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-spotify {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.carousel-spotify-profileitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 390px;
+}
+
+.white-text {
+  color: white;
+  font-family: "Lato", "sans-serif";
+  font-size: 1.5em;
+  margin-top: 2%;
+  margin-left: 30%;
+}
+
+.btn-edit {
+  margin-top: 5%;
+  margin-left: 30%;
+}
+.btn-spotify {
+  margin-top: 5%;
+  margin-left: 35%;
+}
+
+.container-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 25%;
+  margin-top: 10%;
+  width: 50%;
+  height: 600px;
+  background-color: white;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+  font-family: "lato";
+}
+
+.profile-box-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 30px 0px 0px 70px;
+}
+
+.profile-box-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 0px 70px 30px 0px;
+  background-color: #1a1a1d;
+}
+
+.profile-box-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding: 5%;
+}
+
+.profile-pic {
+  width: 100%;
+  margin-top: -5%;
+  height: 50%;
+  border-radius: 30px 0px 0px 0px;
+}
+
+.white-text-2 {
+  color: white;
+  font-family: "Lato";
+  font-size: 1.5em;
+}
+
+.tuneders-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5%;
+  margin-left: 35%;
+  width: 30%;
+  height: 200px;
+  background-color: #6f2232;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+  color: white;
+}
+
+.myprofile-box {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  size: cover;
+}
+
+.container-myprofile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  height: 600px;
+  background-color: white;
+  border-radius: 30px 70px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+  font-family: "lato";
+}
+
+.annoying {
+  width: 100%;
+  height: 80%;
+}
+
+.scoot-over {
+  margin-top: -20%;
+}
+
+.profile-name {
+  font-family: "Lato";
+  font-size: 7em;
+}
+.profile-name-bio {
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 5em;
+}
+
+.chat {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  size: cover;
+}
+
+.landing-modal {
+  margin-right: 100px;
+  margin-bottom: 20%;
+}
+
+p {
+  font-size: 1.2em;
+  font-family: "Lato";
+  color: #1a1a1d;
+}
+
+.link {
+  text-decoration: none;
+  color: #6f2232;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #c3073f;
+}
+
+.btn-light:hover {
+  background-color: #434e50;
+  color: white;
+}
+
+.nav1 {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.navwhole {
+  border: solid gray 5px;
+}
+
+.navitem {
+  border: solid red 5px;
 }
