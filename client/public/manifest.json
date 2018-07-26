@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Tuneder",
+  "name": "A dating and friend finding app based on music taste",
   "icons": [
     {
       "src": "favicon.ico",

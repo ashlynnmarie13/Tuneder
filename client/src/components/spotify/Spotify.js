@@ -17,6 +17,8 @@ class Spotify extends Component {
     this.state = {
       artists: [],
       art: [],
+      tracks: [],
+      albums: [],
       loggedIn: token ? true : false,
       nowPlaying: { name: "Not Checked", albumArt: "" },
       refreshToken: params.refresh_token
@@ -123,6 +125,36 @@ class Spotify extends Component {
       });
       console.log(pictures);
       this.setState({ art: pictures }, this.props.toArtState(pictures));
+    });
+  }
+
+  getTopTracks() {
+    spotifyApi.getMyTopTracks().then(response => {
+      var array = response.items;
+      console.log(response.items);
+      var final = array.map(function(obj) {
+        return obj.name + ", " + obj.artists[0].name;
+      });
+      // console.log(result);
+      // var resultAsString = result.join(", ");
+
+      this.setState({ tracks: final }, this.props.toTrackState(final));
+    });
+  }
+
+  getSavedAlbums() {
+    spotifyApi.getMySavedAlbums().then(response => {
+      var array = response.items;
+      console.log(response.items);
+      var result = array.map(function(obj) {
+        return obj.album;
+      });
+      console.log(result);
+      var albumr = result.map(function(obj) {
+        return obj.name + ", " + obj.artists[0].name;
+      });
+
+      this.setState({ albums: albumr }, this.props.toAlbumState(albumr));
     });
   }
 
@@ -418,6 +450,8 @@ class Spotify extends Component {
             onClick={() => {
               this.getTopArtists();
               this.getAlbumArt();
+              this.getTopTracks();
+              this.getSavedAlbums();
             }}
           >
             Check my Top Artists

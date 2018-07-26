@@ -12,44 +12,57 @@ class MyProfile extends Component {
       <div className="container-myprofile">
         <div className="profile-box-1">
           <img src={profile.avatar} alt="" className="profile-pic" />
-          <h3>{profile.user.name}</h3>
-          <div>
-            <p>
-              Age:
-              {profile.status}{" "}
-              {isEmpty(profile.age) ? null : <span> {profile.age}</span>}
-            </p>
-            <p>
-              Location:
-              {isEmpty(profile.location) ? null : (
-                <span> {profile.location}</span>
-              )}
-            </p>
-            <p>
-              {isEmpty(profile.lookingFor) ? null : (
-                <span> {profile.lookingFor}</span>
-              )}
-            </p>
-            <p>Click "View Profile" to view {profile.user.name}'s full bio!</p>
-            <Link to={`/chat`} className="btn btn-1">
-              Chat
-            </Link>
-          </div>
+          <p>
+            Age:
+            {profile.status}{" "}
+            {isEmpty(profile.age) ? null : (
+              <span>
+                {" "}
+                {profile.age}
+                , Location:<span> {profile.location}, </span>
+                Seeking: <span> {profile.lookingFor} </span>
+              </span>
+            )}
+          </p>
+          <h3>Bio:</h3>
+          <p>{isEmpty(profile.bio) ? null : <span> {profile.bio}</span>}</p>
+          <Link to={`/chat`} className="btn btn-1">
+            Chat
+          </Link>
         </div>
         <div className="profile-box-3">
-          <Link to="/profiles" className="btn btn-light mb-3 scoot-over">
-            Back To Profiles
-          </Link>
           <p>
-            <h3 className="profile-name">{profile.user.name}'s Profile</h3>
-            <h3> Bio:</h3>
-            {profile.status}{" "}
-            {isEmpty(profile.bio) ? null : <span> {profile.bio}</span>}
+            <h3 className="font4">{profile.user.name}</h3>
           </p>
+          <div>
+            Top Tracks:
+            <ol>
+              <li> {profile.tracks[0]}</li>
+              <li> {profile.tracks[1]}</li>
+              <li> {profile.tracks[2]}</li>
+              <li> {profile.tracks[3]}</li>
+              <li> {profile.tracks[4]}</li>
+              <li> {profile.tracks[5]}</li>
+              <li> {profile.tracks[6]}</li>
+              <li> {profile.tracks[7]}</li>
+              <li> {profile.tracks[8]}</li>
+              <li> {profile.tracks[9]}</li>
+            </ol>
+          </div>
+          <div>
+            Saved Albums:
+            <ol>
+              <li> {profile.albums[0]}</li>
+              <li> {profile.albums[1]}</li>
+              <li> {profile.albums[2]}</li>
+              <li> {profile.albums[3]}</li>
+              <li> {profile.albums[4]}</li>
+            </ol>
+          </div>
         </div>
 
         <div className="profile-box-2">
-          <p className="white-text-2"> My top Artists: </p>
+          <p className="white-text-3"> My top Artists: </p>
           <div className="carousel-spotify-profileitem">
             <div>
               <Carousel

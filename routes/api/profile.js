@@ -126,6 +126,8 @@ router.post(
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.artists) profileFields.artists = req.body.artists;
     if (req.body.art) profileFields.art = req.body.art;
+    if (req.body.tracks) profileFields.tracks = req.body.tracks;
+    if (req.body.albums) profileFields.albums = req.body.albums;
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
@@ -149,6 +151,18 @@ router.post(
           new Profile(profileFields).save().then(profile => res.json(profile));
         });
       }
+    });
+  }
+);
+
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+        res.json({ success: true })
+      );
     });
   }
 );

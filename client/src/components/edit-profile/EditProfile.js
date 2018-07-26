@@ -22,6 +22,8 @@ class CreateProfile extends Component {
       bio: "",
       artists: "",
       art: "",
+      tracks: "",
+      albums: "",
       errors: {}
     };
 
@@ -52,6 +54,8 @@ class CreateProfile extends Component {
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.artists = !isEmpty(profile.artists) ? profile.artists : "";
       profile.art = !isEmpty(profile.art) ? profile.art : "";
+      profile.tracks = !isEmpty(profile.tracks) ? profile.tracks : "";
+      profile.albums = !isEmpty(profile.albums) ? profile.albums : "";
 
       // Set component fields state
       this.setState({
@@ -63,7 +67,9 @@ class CreateProfile extends Component {
         lookingFor: profile.lookingFor,
         bio: profile.bio,
         artists: profile.artists,
-        art: profile.art
+        art: profile.art,
+        tracks: profile.tracks,
+        albums: profile.albums
       });
     }
   }
@@ -80,7 +86,9 @@ class CreateProfile extends Component {
       lookingFor: this.state.lookingFor,
       bio: this.state.bio,
       artists: this.state.artists,
-      art: this.state.art
+      art: this.state.art,
+      tracks: this.state.tracks,
+      albums: this.state.albums
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -94,6 +102,8 @@ class CreateProfile extends Component {
     const { errors } = this.state;
     console.log("this is edit profiles state for artists", this.state.artists);
     console.log("this is edit profiles state for art", this.state.art);
+    console.log("this is edit profiles state for tracks", this.state.tracks);
+    console.log("this is edit profiles state for albums", this.state.albums);
     // Select options for status
     const options = [
       { label: "* Select Option", value: 0 },
@@ -192,6 +202,8 @@ class CreateProfile extends Component {
                 <Spotify
                   toState={artists => this.setState({ artists })}
                   toArtState={art => this.setState({ art })}
+                  toTrackState={tracks => this.setState({ tracks })}
+                  toAlbumState={albums => this.setState({ albums })}
                 />
               </div>
             </div>
@@ -202,13 +214,6 @@ class CreateProfile extends Component {
     );
   }
 }
-
-CreateProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired,
-  getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
 
 const mapStateToProps = state => ({
   profile: state.profile,

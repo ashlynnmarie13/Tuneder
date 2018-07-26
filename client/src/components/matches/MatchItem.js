@@ -1,97 +1,311 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is-empty";
 import Chat from "../chat/Chat";
+import { createMatch } from "../../actions/matchActions";
+import Carousel from "../spotify/Carousel.js";
 
-import React, { Component } from "react";
+class MatchItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...this.props.matches
+    };
+  }
 
-export default class MatchItem extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
+  onMatch = () => {
+    const {
+      handle,
+      name,
+      avatar,
+      age,
+      location,
+      lookingFor,
+      bio,
+      artists,
+      art
+    } = this.state;
+    this.setState(
+      {
+        matches: [
+          ...this.state.matches,
+          {
+            handle,
+            name,
+            avatar,
+            age,
+            location,
+            lookingFor,
+            bio,
+            artists,
+            art
+          }
+        ]
+      },
+      () =>
+        this.props.createMatch(
+          { matches: this.state.matches },
+          this.props.history
+        )
+    );
+  };
+
   render() {
-    return <div>MatcheItem</div>;
+    console.log(this.state);
+    const { match } = this.props;
+
+    return (
+      <div className="container-card">
+        <div className="match-box-1">
+          <img src={match.avatar} alt="" className="match-pic" />
+          <h3>{match.user.name}</h3>
+          <div>
+            <p>
+              Age:
+              {match.status}{" "}
+              {isEmpty(match.age) ? null : <span> {match.age}</span>}
+            </p>
+            <p>
+              Location:
+              {isEmpty(match.location) ? null : <span> {match.location}</span>}
+            </p>
+            <p>
+              {isEmpty(match.lookingFor) ? null : (
+                <span> {match.lookingFor}</span>
+              )}
+            </p>
+            <p>Click "View match" to view {match.user.name}'s full bio!</p>
+            <Link to={`/match/${match.handle}`} className="btn">
+              View match
+            </Link>
+            <Link to={`/chat`} className="btn btn-1">
+              Chat
+            </Link>
+            <button className="btn" onClick={this.onMatch}>
+              Match
+            </button>
+          </div>
+        </div>
+        <div className="match-box-2">
+          <p className="white-text-2"> My top Artists: </p>
+          <div className="carousel-spotify-profileitem">
+            <div>
+              <Carousel
+                autoPlayInterval={2000}
+                indicator={true}
+                switcher={true}
+              >
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[0]}
+                    <img className="spotify-image" src={match.art[0]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[1]}
+                    <img className="spotify-image" src={match.art[1]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {this.state.artists[4]}
+                    <img className="spotify-image" src={match.art[4]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[5]}
+                    <img className="spotify-image" src={match.art[5]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[8]}
+                    <img className="spotify-image" src={match.art[8]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[9]}
+                    <img className="spotify-image" src={match.art[9]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[12]}
+                    <img className="spotify-image" src={match.art[12]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[13]}
+                    <img className="spotify-image" src={match.art[13]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[16]}
+                    <img className="spotify-image" src={match.art[16]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[17]}
+                    <img className="spotify-image" src={match.art[17]} alt="" />
+                  </div>
+                </div>
+              </Carousel>
+            </div>
+            <div>
+              <Carousel
+                autoPlayInterval={2000}
+                indicator={true}
+                switcher={true}
+              >
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[2]}
+                    <img className="spotify-image" src={match.art[2]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[3]}
+                    <img className="spotify-image" src={match.art[3]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[6]}
+                    <img className="spotify-image" src={match.art[6]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[7]}
+                    <img className="spotify-image" src={match.art[7]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[10]}
+                    <img className="spotify-image" src={match.art[10]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[11]}
+                    <img className="spotify-image" src={match.art[11]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[14]}
+                    <img className="spotify-image" src={match.art[14]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[15]}
+                    <img className="spotify-image" src={match.art[15]} alt="" />
+                  </div>
+                </div>
+                <div
+                  className="spotify-box"
+                  style={{
+                    height: "200px",
+                    textAlign: "center",
+                    backgroundColor: "#1a1a1d",
+                    color: "white"
+                  }}
+                >
+                  <div className="spotify-item">
+                    {match.artists[18]}
+                    <img className="spotify-image" src={match.art[19]} alt="" />
+                  </div>
+                  <div className="spotify-item">
+                    {match.artists[19]}
+                    <img className="spotify-image" src={match.art[19]} alt="" />
+                  </div>
+                </div>
+              </Carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
-// class MatchItem extends Component {
+const mapStateToProps = state => ({
+  matches: state.matches
+});
 
-//     getMatches().then(response => {
-//           var array = response.matches.items;
-//           var result = array.map(function(obj) {
-//             return obj.name;
-//           });
-//           console.log(result);
-//           var resultAsString = result.join(", ");
-
-//           this.setState(
-//             {
-//         matches: [
-//           ...this.state.matches,
-//           {
-//             handle,
-//             name,
-//             avatar,
-//             age,
-//             location,
-//             lookingFor,
-//             bio,
-//             artists
-//           }
-//         ]
-//       },
-//             this.props.toState(resultAsString)
-//           );
-//         });
-//       }
-//   render() {
-//     const { matches } = this.props;
-
-//       getTopArtists() {
-//     spotifyApi.getMyTopArtists().then(response => {
-//       var array = response.items;
-//       var result = array.map(function(obj) {
-//         return obj.name;
-//       });
-//       console.log(result);
-//       var resultAsString = result.join(", ");
-
-//       this.setState(
-//         { artists: resultAsString },
-//         this.props.toState(resultAsString)
-//       );
-//     });
-//   }
-//     return (
-//       <div className="card card-body bg-secondary mb-3 text-center">
-//         <div className="row">
-//           <img src={matches.item.avatar} alt="" className="card-img-top" />
-//           <h3 className="card-img-overlay">{match.item.user.name}</h3>
-//           <div className="col-lg-6 col-md-4 col-8 text-light">
-//             <p>
-//               Favorite Artists:
-//               {match.status}{" "}
-//               {isEmpty(match.item.artists) ? null : (
-//                 <span>at {match.item.artists}</span>
-//               )}
-//             </p>
-//             <p>
-//               {isEmpty(match.item.location) ? null : (
-//                 <span>{match.item.location}</span>
-//               )}
-//             </p>
-//             <Link
-//               to={`/profile/${match.item.handle}`}
-//               className="btn btn-warning"
-//             >
-//               View Profile
-//             </Link>
-//             <Link to={`/chat`} className="btn btn-warning">
-//               Chat
-//             </Link>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default MatchItem;
+export default connect(
+  mapStateToProps,
+  { createMatch }
+)(withRouter(ProfileItem));

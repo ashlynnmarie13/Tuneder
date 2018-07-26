@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 // spotify middleware
 app
-  .use(express.static(__dirname + "/public"))
+  .use(express.static(path.join(__dirname, "/./client/build")))
   .use(cors())
   .use(cookieParser());
 
@@ -36,7 +36,7 @@ const db = require("./config/keys").mongoURI;
 //spotify id and secret
 var sp_client_id = "1142d8ac39384674b9662b8081e2001aD"; // Your client id
 var sp_client_secret = "8913f9e2215d4ce5b4c2d30ee7a68e74"; // Your secret
-var sp_redirect_uri = "https://localhost:3000/callback"; // Your redirect uri
+var sp_redirect_uri = process.env.REACT_APP_CALLBACK; // Your redirect uri
 
 //spotify random string
 const generateRandomString = function(length) {
@@ -102,11 +102,11 @@ app.use("/api/spotify", spotify);
 app.use("/api/matches", matches);
 
 // Server static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
+// if (process.env.NODE_ENV === "production") {
+// Set static folder
+// app.use(express.static(__dirname + "./client/build"));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/./client/public/index.html"));
+});
+// }

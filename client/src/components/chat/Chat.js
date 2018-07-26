@@ -47,9 +47,6 @@ class Chat extends React.Component {
     return (
       <div className="register-background">
         <div className="chat">
-          <Link to="/profiles" className="btn btn-light mb-3">
-            Back To Profiles
-          </Link>
           <div className="card">
             <div className="card-body">
               <div className="card-title">Send your message</div>
@@ -64,7 +61,7 @@ class Chat extends React.Component {
               })}
             </div>
             <div className="card-footer">
-              <h3>{name}</h3>
+              <h3>Dave</h3>
 
               <br />
               <input

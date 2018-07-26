@@ -36,6 +36,12 @@ const ProfileSchema = new Schema({
   art: {
     type: Object
   },
+  tracks: {
+    type: Object
+  },
+  albums: {
+    type: Object
+  },
   date: {
     type: Date,
     default: Date.now
