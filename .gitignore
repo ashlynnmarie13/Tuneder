@@ -3,6 +3,10 @@ package-lock.json
 /config/keys_dev.js
 .env
 .env.prod
-/client/src/matches
-/client/src/reducers/matchReducer
-/client/src/reducers/spotifyReducer
+/client/src/components/matches/CreateMatch.js
+/client/src/components/matches/Matches.js
+/client/src/components/matches/MatchItem.js
+/client/src/components/chat/Chat.js
+/client/src/reducers/matchReducer.js
+/client/src/reducers/spotifyReducer.js
+
