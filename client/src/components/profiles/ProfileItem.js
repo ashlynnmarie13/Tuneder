@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is-empty";
 import Chat from "../chat/Chat";
-// import { createMatch } from "../../actions/matchActions";
+import { createMatch } from "../../actions/matchActions";
 import Carousel from "../spotify/Carousel.js";
 
 class ProfileItem extends Component {
@@ -87,14 +87,19 @@ class ProfileItem extends Component {
                 <span> {profile.lookingFor}</span>
               )}
             </p>
-            <p>Click "View Profile" to view {profile.user.name}'s full bio!</p>
+            <p>
+              Click "View Profile" to view {profile.user.name}
+              's full bio!
+            </p>
             <Link to={`/profile/${profile.handle}`} className="btn btn-scoot">
               View Profile
             </Link>
             <Link to={`/chat`} className="btn btn-1">
               Chat
             </Link>
-            <button className="btn">Match</button>
+            <button className="btn" onClick={this.onMatch}>
+              Match
+            </button>
           </div>
         </div>
         <div className="profile-box-2">
@@ -388,6 +393,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps
-  // { createMatch }
+  mapStateToProps,
+  { createMatch }
 )(withRouter(ProfileItem));

@@ -68,8 +68,8 @@ router.post(
       } else {
         Match.findOne({ handle: matchFields.handle }).then(match => {
           if (match) {
-            errors.handle = "That handle already exists";
-            res.status(400).json(errors);
+            // errors.handle = "That handle already exists";
+            // res.status(400).json(errors);
           }
 
           // Save Profile

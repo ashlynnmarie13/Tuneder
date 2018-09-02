@@ -18,8 +18,8 @@ class MyProfile extends Component {
             {isEmpty(profile.age) ? null : (
               <span>
                 {" "}
-                {profile.age}
-                , Location:<span> {profile.location}, </span>
+                {profile.age}, Location:
+                <span> {profile.location}, </span>
                 Seeking: <span> {profile.lookingFor} </span>
               </span>
             )}
@@ -56,7 +56,6 @@ class MyProfile extends Component {
               <li> {profile.albums[1]}</li>
               <li> {profile.albums[2]}</li>
               <li> {profile.albums[3]}</li>
-              <li> {profile.albums[4]}</li>
             </ol>
           </div>
         </div>

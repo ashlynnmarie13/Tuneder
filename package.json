@@ -1,7 +1,7 @@
 {
   "name": "TUNEder",
   "version": "1.0.0",
-  "description": "Social network for developers",
+  "description": "Dating and friend finding service based on music taste",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
