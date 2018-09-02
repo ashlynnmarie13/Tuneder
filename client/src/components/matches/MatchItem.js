@@ -30,7 +30,7 @@ class MatchItem extends Component {
       <div className="container-card">
         <div className="match-box-1">
           <img src={match.avatar} alt="" className="match-pic" />
-          <h3>{match.user.name}</h3>
+          {/* <h3>{match.user.name}</h3> */}
           <div>
             <p>
               Age:
@@ -46,10 +46,10 @@ class MatchItem extends Component {
                 <span> {match.lookingFor}</span>
               )}
             </p>
-            <p>
+            {/* <p>
               Click "View match" to view {match.user.name}
               's full bio!
-            </p>
+            </p> */}
             <Link to={`/match/${match.handle}`} className="btn">
               View match
             </Link>
