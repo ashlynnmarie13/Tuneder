@@ -3,22 +3,15 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-// Load Validation
 const validateProfileInput = require("../../validation/profile");
 
-// Load Profile Model
 const Profile = require("../../models/Profile");
-// Load User Model
+
 const User = require("../../models/User");
 
-// @route   GET api/profile/test
-// @desc    Tests profile route
-// @access  Public
-router.get("/test", (req, res) => res.json({ msg: "Profile Works" }));
+// api/profile
+// Get current users profile
 
-// @route   GET api/profile
-// @desc    Get current users profile
-// @access  Private
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -38,9 +31,9 @@ router.get(
   }
 );
 
-// @route   GET api/profile/all
-// @desc    Get all profiles
-// @access  Public
+// api/profile/all
+// Get all profiles
+
 router.get("/all", (req, res) => {
   const errors = {};
 
@@ -57,9 +50,8 @@ router.get("/all", (req, res) => {
     .catch(err => res.status(404).json({ profile: "There are no profiles" }));
 });
 
-// @route   GET api/profile/handle/:handle
-// @desc    Get profile by handle
-// @access  Public
+// api/profile/handle/:handle
+// Get profile by handle
 
 router.get("/handle/:handle", (req, res) => {
   const errors = {};
@@ -77,9 +69,8 @@ router.get("/handle/:handle", (req, res) => {
     .catch(err => res.status(404).json(err));
 });
 
-// @route   GET api/profile/user/:user_id
-// @desc    Get profile by user ID
-// @access  Public
+// api/profile/user/:user_id
+// Get profile by user ID
 
 router.get("/user/:user_id", (req, res) => {
   const errors = {};
@@ -99,9 +90,9 @@ router.get("/user/:user_id", (req, res) => {
     );
 });
 
-// @route   POST api/profile
-// @desc    Create or edit user profile
-// @access  Private
+// api/profile
+// Create or edit profile
+
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),

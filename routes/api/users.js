@@ -6,25 +6,17 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
-// Load Input Validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-// Load User model
 const User = require("../../models/User");
 
-// @route   GET api/users/test
-// @desc    Tests users route
-// @access  Public
-router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
+// api/users/register
+// Create new user
 
-// @route   POST api/users/register
-// @desc    Register user
-// @access  Public
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
-  // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
@@ -34,11 +26,12 @@ router.post("/register", (req, res) => {
       errors.email = "Email already exists";
       return res.status(400).json(errors);
     } else {
-      const avatar = gravatar.url(req.body.email, {
-        s: "200", // Size
-        r: "pg", // Rating
-        d: "mm" // Default
-      });
+      // const avatar = gravatar.url(req.body.email, {
+      //   s: "200", // Size
+      //   r: "pg", // Rating
+      //   d: "mm" // Default
+      // });
+      const avatar = "";
 
       const newUser = new User({
         name: req.body.name,
@@ -61,13 +54,12 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route   GET api/users/login
-// @desc    Login User / Returning JWT Token
-// @access  Public
+// api/users/login
+// Login User
+
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
-  // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
   }
@@ -75,7 +67,7 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  // Find user by email
+  // Finding user by email
   User.findOne({ email }).then(user => {
     // Check for user
     if (!user) {
@@ -83,11 +75,11 @@ router.post("/login", (req, res) => {
       return res.status(404).json(errors);
     }
 
-    // Check Password
+    // Checking password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User Matched
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+        const payload = { id: user.id, name: user.name, avatar: user.avatar };
 
         // Sign Token
         jwt.sign(

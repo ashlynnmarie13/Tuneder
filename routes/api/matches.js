@@ -3,36 +3,29 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-// Load Profile Model
 const Profile = require("../../models/Profile");
-// Load User Model
+
 const User = require("../../models/User");
 
-// Load Match Model
 const Match = require("../../models/Match");
 
-// @route   GET api/matches/all
-// @desc    Get all matches
-// @access  Public
+// Get current user's matches
+// api/matches
+
 router.get(
-  "/all",
+  "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Match.find()
-      .populate("user", ["name", "age"])
-      .then(matches => {
-        if (!matches) {
-          errors.nomatches = "There are no matches";
-          return res.status(404).json(errors);
-        }
+    const errors = {};
 
-        res.json(matches);
-      })
-      .catch(err => res.status(404).json({ matches: "There are no matches" }));
+    Match.findOne({ user: req.user.id })
+      // .populate("user", ["name", "avatar"])
+      .then(matches => res.status(200).send(matches))
+      .catch(err => res.status(404).json(err));
   }
 );
 
-// add a match
+// Add a match
 // api/matches
 
 router.post(
@@ -40,52 +33,34 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     // Get fields
-    console.log(req);
+
     const matchFields = {};
     matchFields.user = req.user.id;
-    console.log(matchFields);
+
     if (req.body.matches) matchFields.matches = req.body.matches;
-    // if (req.body.matches.data.handle)
-    //   matchFields.name = req.body.matches.data.handle;
-    // if (req.body.matches.data.name)
-    //   matchFields.name = req.body.matches.data.name;
-    // if (req.body.matches.data.avatar)
-    //   matchFields.avatar = req.body.matches.data.avatar;
-    // if (req.body.matches.data.age) matchFields.age = req.body.matches.data.age;
-    // if (req.body.matches.data.location)
-    //   matchFields.location = req.body.matches.data.location;
-    // if (req.body.matches.data.lookingFor)
-    //   matchFields.lookingFor = req.body.matches.data.lookingFor;
-    // if (req.body.matches.data.bio) matchFields.bio = req.body.matches.data.bio;
-    // if (req.body.matches.data.artists)
-    //   matchFields.artists = req.body.matches.data.artists;
 
-    // Match.update(
-    //   console.log(matchFields),
-    //   { user: req.user.id },
-    //   { $push: { matches: matchFields } }
-    // ).then(response => console.log(response));
+    // Finding if the Match object for one user exists
+    Match.findOne({ user: req.user.id }).then(match => {
+      // If the Match object exists, then update the matches array within the object
+      if (match) {
+        Match.update(
+          { user: req.user.id },
+          { $push: { matches: matchFields.matches } },
+          { new: true }
+        ).then(match => res.json(match));
+        // If it does not exist, then create a new Match object for that user
+      } else {
+        Match.findOne({ handle: matchFields.handle }).then(match => {
+          if (match) {
+            errors.handle = "That handle already exists";
+            res.status(400).json(errors);
+          }
 
-    // Match.findOne({ user: req.user.id }).then(match => {
-    //   console.log(match);
-    //   if (match) {
-    //     Match.findOneAndUpdate(
-    //       { user: req.user.id },
-    //       { $set: matchFields },
-    //       { new: true }
-    //     ).then(match => res.json(match));
-    //   } else {
-    //     Match.findOne({ handle: matchFields.handle }).then(match => {
-    //       if (match) {
-    //         errors.handle = "That handle already exists";
-    //         res.status(400).json(errors);
-    //       }
-
-    //       // Save Match
-    //       new Match(matchFields).save().then(match => res.json(match));
-    //     });
-    //   }
-    // });
+          // Save Match
+          new Match(matchFields).save().then(match => res.json(match));
+        });
+      }
+    });
   }
 );
 

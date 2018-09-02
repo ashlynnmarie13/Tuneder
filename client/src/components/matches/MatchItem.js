@@ -22,43 +22,6 @@ class MatchItem extends Component {
     }
   }
 
-  onMatch = () => {
-    const {
-      handle,
-      name,
-      avatar,
-      age,
-      location,
-      lookingFor,
-      bio,
-      artists,
-      art
-    } = this.state;
-    this.setState(
-      {
-        matches: [
-          ...this.state.matches,
-          {
-            handle,
-            name,
-            avatar,
-            age,
-            location,
-            lookingFor,
-            bio,
-            artists,
-            art
-          }
-        ]
-      },
-      () =>
-        this.props.createMatch(
-          { matches: this.state.matches },
-          this.props.history
-        )
-    );
-  };
-
   render() {
     console.log(this.state);
     const { match } = this.props;
@@ -83,16 +46,16 @@ class MatchItem extends Component {
                 <span> {match.lookingFor}</span>
               )}
             </p>
-            <p>Click "View match" to view {match.user.name}'s full bio!</p>
+            <p>
+              Click "View match" to view {match.user.name}
+              's full bio!
+            </p>
             <Link to={`/match/${match.handle}`} className="btn">
               View match
             </Link>
             <Link to={`/chat`} className="btn btn-1">
               Chat
             </Link>
-            <button className="btn" onClick={this.onMatch}>
-              Match
-            </button>
           </div>
         </div>
         <div className="match-box-2">
@@ -308,4 +271,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { createMatch }
-)(withRouter(ProfileItem));
+)(withRouter(MatchItem));
