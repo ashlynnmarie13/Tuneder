@@ -40,8 +40,10 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     // Get fields
+    console.log(req);
     const matchFields = {};
     matchFields.user = req.user.id;
+    console.log(matchFields);
     if (req.body.matches) matchFields.matches = req.body.matches;
     // if (req.body.matches.data.handle)
     //   matchFields.name = req.body.matches.data.handle;
@@ -58,25 +60,32 @@ router.post(
     // if (req.body.matches.data.artists)
     //   matchFields.artists = req.body.matches.data.artists;
 
-    Match.findOne({ user: req.user.id }).then(match => {
-      if (match) {
-        Match.findOneAndUpdate(
-          { user: req.user.id },
-          { $set: matchFields },
-          { new: true }
-        ).then(match => res.json(match));
-      } else {
-        Match.findOne({ handle: matchFields.handle }).then(match => {
-          if (match) {
-            errors.handle = "That handle already exists";
-            res.status(400).json(errors);
-          }
+    // Match.update(
+    //   console.log(matchFields),
+    //   { user: req.user.id },
+    //   { $push: { matches: matchFields } }
+    // ).then(response => console.log(response));
 
-          // Save Profile
-          new Match(matchFields).save().then(match => res.json(match));
-        });
-      }
-    });
+    // Match.findOne({ user: req.user.id }).then(match => {
+    //   console.log(match);
+    //   if (match) {
+    //     Match.findOneAndUpdate(
+    //       { user: req.user.id },
+    //       { $set: matchFields },
+    //       { new: true }
+    //     ).then(match => res.json(match));
+    //   } else {
+    //     Match.findOne({ handle: matchFields.handle }).then(match => {
+    //       if (match) {
+    //         errors.handle = "That handle already exists";
+    //         res.status(400).json(errors);
+    //       }
+
+    //       // Save Match
+    //       new Match(matchFields).save().then(match => res.json(match));
+    //     });
+    //   }
+    // });
   }
 );
 

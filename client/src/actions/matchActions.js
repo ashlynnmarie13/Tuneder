@@ -13,7 +13,7 @@ export const createMatch = (matches, history) => dispatch => {
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: console.log("you have an error", err)
       })
     );
 };
