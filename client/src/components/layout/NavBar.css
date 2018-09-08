@@ -1,0 +1,41 @@
+.navbar-toggler {
+  color: white;
+  border: solid white 2px;
+  height: 100%;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+.navbar-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+}
+
+.nav-item {
+  text-decoration: none;
+  font-style: none;
+  font-size: 1.5em;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+.nav-link:hover {
+  text-decoration: none;
+  color: white;
+  transform: scale(1.03) perspective(1px);
+}
+
+#mobile-nav {
+  margin-bottom: 50px;
+}
+
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+  display: none;
+}

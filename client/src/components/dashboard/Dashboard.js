@@ -73,7 +73,7 @@ class Dashboard extends Component {
             </div>
             <img
               className="good-image"
-              src="https://media.gettyimages.com/photos/young-couple-is-listening-music-on-their-mobile-picture-id539206195?b=1&k=6&m=539206195&s=612x612&w=0&h=FqY3-_JdkuD-8rmU2JO6_wSaVYJGMc7LKCeA16tMuow="
+              src="https://images.unsplash.com/photo-1483032469466-b937c425697b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66e2534cd26bf0bdf54e2ceb40dbd55a&auto=format&fit=crop&w=800&q=60"
             />
           </div>
         </div>
