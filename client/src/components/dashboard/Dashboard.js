@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import ProfileActions from "./ProfileActions";
-
+import "./Dashboard.css";
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
@@ -38,7 +38,7 @@ class Dashboard extends Component {
             </div>
             <button
               onClick={this.onDeleteClick.bind(this)}
-              className="btn btn-1 scoot-right"
+              className="btn scoot-right"
             >
               Delete My Account
             </button>
@@ -51,7 +51,7 @@ class Dashboard extends Component {
             <p className="scoot-right">
               Set up a profile to let other users know what you're looking for!
             </p>
-            <Link to="/create-profile" className="scoot-right btn btn-lg">
+            <Link to="/create-profile" className="scoot-right btn">
               Create Profile
             </Link>
           </div>
@@ -61,7 +61,7 @@ class Dashboard extends Component {
 
     return (
       <div className="register-background">
-        <div className="register">
+        <div className="general-format">
           <div className="container-pic">
             <div className="row">
               <div className="col-md-12">

@@ -6,6 +6,7 @@ import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import { createProfile } from "../../actions/profileActions";
+import "./CreateProfile.css";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -71,73 +72,79 @@ class CreateProfile extends Component {
 
     return (
       <div className="register-background">
+        <div className="dark-overlay" />
         <div className="create-profile">
           <div className="container-create">
             <div className="row">
-              <div className="col-md-8 m-auto">
+              <div className="col m-auto">
                 <h1 className="red-text display-4 text-center">
                   Create Your Profile
                 </h1>
                 <form onSubmit={this.onSubmit}>
-                  <TextFieldGroup
-                    placeholder="Username - put something catchy!"
-                    name="handle"
-                    value={this.state.handle}
-                    onChange={this.onChange}
-                    error={errors.handle}
-                  />
-                  <TextFieldGroup
-                    placeholder="Name"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.onChange}
-                    error={errors.name}
-                  />
-                  <TextFieldGroup
-                    placeholder="Profile Pic URL"
-                    name="avatar"
-                    value={this.state.avatar}
-                    onChange={this.onChange}
-                    error={errors.avatar}
-                    info="Copy and paste an image of yourself here!"
-                  />
-                  <TextFieldGroup
-                    placeholder="Age"
-                    name="age"
-                    value={this.state.age}
-                    onChange={this.onChange}
-                    error={errors.age}
-                  />
-                  <TextFieldGroup
-                    placeholder="Location"
-                    name="location"
-                    value={this.state.location}
-                    onChange={this.onChange}
-                    error={errors.location}
-                  />
-                  <SelectListGroup
-                    placeholder="Seeking..."
-                    name="lookingFor"
-                    value={this.state.lookingFor}
-                    onChange={this.onChange}
-                    options={options}
-                    error={errors.lookingFor}
-                  />
-                  <TextAreaFieldGroup
-                    placeholder="Bio"
-                    name="bio"
-                    value={this.state.bio}
-                    onChange={this.onChange}
-                    error={errors.bio}
-                  />
-                  <TextFieldGroup
-                    placeholder="Artists I like...."
-                    name="artists"
-                    value={this.state.artists}
-                    onChange={this.onChange}
-                    error={errors.artists}
-                  />
-
+                  <div className="row">
+                    <div className="col">
+                      <TextFieldGroup
+                        placeholder="Username - put something catchy!"
+                        name="handle"
+                        value={this.state.handle}
+                        onChange={this.onChange}
+                        error={errors.handle}
+                      />
+                      <TextFieldGroup
+                        placeholder="Name"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.onChange}
+                        error={errors.name}
+                      />
+                      <TextFieldGroup
+                        placeholder="Profile Pic URL"
+                        name="avatar"
+                        value={this.state.avatar}
+                        onChange={this.onChange}
+                        error={errors.avatar}
+                        info="Copy and paste an image of yourself here!"
+                      />
+                      <TextFieldGroup
+                        placeholder="Age"
+                        name="age"
+                        value={this.state.age}
+                        onChange={this.onChange}
+                        error={errors.age}
+                      />
+                    </div>
+                    <div className="col">
+                      <TextFieldGroup
+                        placeholder="Location"
+                        name="location"
+                        value={this.state.location}
+                        onChange={this.onChange}
+                        error={errors.location}
+                      />
+                      <SelectListGroup
+                        placeholder="Seeking..."
+                        name="lookingFor"
+                        value={this.state.lookingFor}
+                        onChange={this.onChange}
+                        options={options}
+                        error={errors.lookingFor}
+                      />
+                      <TextAreaFieldGroup
+                        placeholder="Bio"
+                        name="bio"
+                        value={this.state.bio}
+                        onChange={this.onChange}
+                        error={errors.bio}
+                      />
+                      <TextFieldGroup
+                        placeholder="Artists I like...."
+                        name="artists"
+                        value={this.state.artists}
+                        onChange={this.onChange}
+                        error={errors.artists}
+                      />
+                    </div>
+                  </div>
                   <input
                     type="submit"
                     value="Submit"
@@ -147,7 +154,6 @@ class CreateProfile extends Component {
               </div>
             </div>
           </div>
-          <div className="dark-overlay" />
         </div>
       </div>
     );

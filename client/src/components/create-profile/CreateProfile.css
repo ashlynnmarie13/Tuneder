@@ -1,0 +1,19 @@
+.container-create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  height: 60%;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 5px 5px 4px #1a1a1d;
+  padding: 2%;
+}
+
+.create-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

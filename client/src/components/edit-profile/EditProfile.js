@@ -8,6 +8,7 @@ import SelectListGroup from "../common/SelectListGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import isEmpty from "../../validation/is-empty";
 import Spotify from "../spotify/Spotify";
+import EditProfile from "./EditProfile.css";
 
 class CreateProfile extends Component {
   constructor(props) {

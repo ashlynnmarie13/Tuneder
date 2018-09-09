@@ -26,25 +26,15 @@ class Spotify extends Component {
     this.getTopArtists = this.getTopArtists.bind(this);
     this.getAlbumArt = this.getAlbumArt.bind(this);
   }
-  //   componentDidMount() {
-  //     let parsed = queryString.parse(window.location.search);
-  //     let accessToken = parsed.access_token;
-  //     if (!accessToken) return;
-  //     fetch("https://api.spotify.com/v1/me/top/artists", {
-  //       headers: { Authorization: "Bearer " + accessToken }
-  //     })
-  //       .then(response => response.json())
-  //       .then(data =>
-  //         this.setState({
-  //           artists: data.items.map(item => {
-  //             console.log(data.items);
-  //             return {
-  //               artists: item.name
-  //             };
-  //           })
-  //         })
-  //       );
-  //   }
+
+  componentDidMount() {
+    this.state.loggedIn
+      ? (this.getTopArtists(),
+        this.getAlbumArt(),
+        this.getTopTracks(),
+        this.getSavedAlbums())
+      : console.log("nope");
+  }
 
   //   componentDidMount() {
   //     // const params = this.getHashParams();
@@ -171,6 +161,7 @@ class Spotify extends Component {
 
   render() {
     const { artists, art } = this.props;
+
     return (
       <div className="App">
         <p className="white-text"> My top Artists: </p>
@@ -444,19 +435,6 @@ class Spotify extends Component {
             </Carousel>
           </div>
         </div>
-        {this.state.loggedIn && (
-          <button
-            className="btn btn-edit"
-            onClick={() => {
-              this.getTopArtists();
-              this.getAlbumArt();
-              this.getTopTracks();
-              this.getSavedAlbums();
-            }}
-          >
-            Check my Top Artists
-          </button>
-        )}
       </div>
     );
   }

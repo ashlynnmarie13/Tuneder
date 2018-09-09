@@ -126,29 +126,6 @@ span.tags {
   box-shadow: 5px 5px 4px #1a1a1d;
 }
 
-.container-create {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 40%;
-  height: 800px;
-  margin-top: 150px;
-  margin-left: 30%;
-  background-color: white;
-  border-radius: 30px 30px;
-  box-shadow: 5px 5px 4px #1a1a1d;
-}
-
-.container-edit {
-  margin-top: 10%;
-  width: 70%;
-  height: 600px;
-  margin-left: 25%;
-  background-color: white;
-  border-radius: 30px 30px;
-  box-shadow: 5px 5px 4px #1a1a1d;
-}
-
 .font1 {
   color: white;
   font-size: 13vh;
@@ -207,28 +184,17 @@ span.tags {
   background-image: url(https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 
-.register {
+.general-format {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 10%;
   height: 500px;
 }
 
 .red-text {
   color: #6f2232;
-}
-
-.container-pic {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 60%;
-  height: 500px;
-  margin-left: 20%;
-  background-color: white;
-  border-radius: 30px 30px;
-  box-shadow: 5px 5px 4px #1a1a1d;
 }
 
 .good-image {
@@ -419,7 +385,6 @@ span.tags {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 390px;
 }
 
 .white-text {
@@ -621,7 +586,7 @@ p {
 
 .link:hover {
   text-decoration: none;
-  color: #c3073f;
+  color: black;
 }
 
 .font4 {
