@@ -65,6 +65,7 @@ class ProfileItem extends Component {
     console.log(this.state);
     const { profile } = this.props;
     const artists = profile.artists;
+    const art = profile.art;
     console.log(artists);
 
     return (
@@ -87,7 +88,7 @@ class ProfileItem extends Component {
           </div>
         </div>
         <div className="profile-box-2">
-          <ArtistItem artists={artists} />
+          <ArtistItem artists={artists} art={art} />
         </div>
         <div className="profile-box-3">
           <Link to={`/profile/${profile.handle}`} className="btn">
