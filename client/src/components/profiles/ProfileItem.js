@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is-empty";
 import Chat from "../chat/Chat";
 import { createMatch } from "../../actions/matchActions";
-import Carousel from "../spotify/Carousel.js";
+import "./Profiles.css";
 import ArtistItem from "./ArtistItem.js";
 class ProfileItem extends Component {
   constructor(props) {
@@ -64,21 +64,15 @@ class ProfileItem extends Component {
   render() {
     console.log(this.state);
     const { profile } = this.props;
-    // const artists = profile.artists;
-    // console.log(artists);
-
-    // if (artists.length > 0) {
-    //   artistItems = artists.map(artists => <SpotifyItem artists={artists} />);
-    // } else {
-    //   artistItems = <h4>No artists to show</h4>;
-    // }
+    const artists = profile.artists;
+    console.log(artists);
 
     return (
       <div className="container-card">
+        <img src={profile.avatar} alt="" className="profile-pic" />
         <div className="profile-box-1">
-          <img src={profile.avatar} alt="" className="profile-pic" />
           <h3>{profile.user.name}</h3>
-          <div>
+          <div className="card-detail">
             <p>
               Age:
               {profile.status}{" "}
@@ -90,27 +84,22 @@ class ProfileItem extends Component {
                 <span> {profile.location}</span>
               )}
             </p>
-            <p>
-              {isEmpty(profile.lookingFor) ? null : (
-                <span> {profile.lookingFor}</span>
-              )}
-            </p>
-            <p>
-              Click "View Profile" to view {profile.user.name}
-              's full bio!
-            </p>
-            <Link to={`/profile/${profile.handle}`} className="btn btn-scoot">
-              View Profile
-            </Link>
-            <Link to={`/chat`} className="btn btn-1">
-              Chat
-            </Link>
-            <button className="btn" onClick={this.onMatch}>
-              Match
-            </button>
           </div>
         </div>
-        {/* <div className="profile-box-2">{artistItems}</div> */}
+        <div className="profile-box-2">
+          <ArtistItem artists={artists} />
+        </div>
+        <div className="profile-box-3">
+          <Link to={`/profile/${profile.handle}`} className="btn">
+            Profile
+          </Link>
+          <Link to={`/chat`} className="btn btn-1">
+            Chat
+          </Link>
+          <button className="btn" onClick={this.onMatch}>
+            Match
+          </button>
+        </div>
       </div>
     );
   }

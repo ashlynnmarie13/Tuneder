@@ -29,14 +29,7 @@ class Profiles extends Component {
     return (
       <div>
         <div className="profiles-new">
-          <div className="tuneders-box">
-            <h1 className="text-center">TUNEder Profiles</h1>
-            <p className="text-center white-text-2">
-              If you are interested, click the "Match" button!
-            </p>
-          </div>
-          {/* <div style={Object.assign({}, styles.slide, styles.slide1)}> */}
-          {profileItems}
+          <div className="profiles-grid">{profileItems}</div>
         </div>
         <div className="register-background" />
         <div className="dark-overlay" />
