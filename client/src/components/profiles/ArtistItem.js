@@ -16,34 +16,18 @@ class ArtistItem extends Component {
     let artistItems;
     let artItems;
 
-    (artists.length>0) &&
-      (artistItems = artists.map((val, i) => {
-        const {
-          city,
-          id,
-          image,
-          loggedInUser,
-          monthlyCost,
-          moveInDate,
-          rentLength,
-          state,
-          userID,
-          address,
-          rent
-        } = val;
+    artists.map(artist => {
+      const { artist } = val;
+    });
+    return { artist };
 
-        return (
-          <div>
-          {artist}
-          </div>
-        )
-    {/* if (art.length > 0) {
+    if (art.length > 0) {
       artItems = art.map((val, i) => {
         const { art } = val;
       });
     } else {
       console.log("no");
-    } */}
+    }
 
     return (
       <div style={{ color: "white" }}>
