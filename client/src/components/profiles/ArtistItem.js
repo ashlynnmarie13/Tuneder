@@ -16,24 +16,24 @@ class ArtistItem extends Component {
     let artistItems;
     let artItems;
 
-    artists.map(artist => {
-      const { artist } = val;
-    });
-    return { artist };
+    // artists.map(artist => {
+    //   const { artist } = val;
+    // });
+    // return { artist };
 
-    if (art.length > 0) {
-      artItems = art.map((val, i) => {
-        const { art } = val;
-      });
-    } else {
-      console.log("no");
-    }
+    // if (art.length > 0) {
+    //   artItems = art.map((val, i) => {
+    //     const { art } = val;
+    //   });
+    // } else {
+    //   console.log("no");
+    // }
 
     return (
       <div style={{ color: "white" }}>
         Top artists:
-        {artistItems}
-        {art}
+        {/* {artistItems}
+        {art} */}
       </div>
     );
   }

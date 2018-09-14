@@ -54,7 +54,7 @@ class Navbar extends Component {
                 <li className="nav-item">
                   <Link className="nav-link" to="/profiles">
                     {" "}
-                    TUNEder
+                    Search Profiles
                   </Link>
                 </li>
               </ul>
